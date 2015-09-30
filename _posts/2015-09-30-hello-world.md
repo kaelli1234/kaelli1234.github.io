@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Hello World!
-categories: [general]
-tags: []
+title: 开篇日志
+categories: [技术]
+tags: [PHP]
 fullview: true
 comments: true
 ---

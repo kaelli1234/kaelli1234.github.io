@@ -7,7 +7,7 @@
 		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Hello World!</title>
+				<title>开篇日志</title>
 				<description>&lt;p&gt;作为一个程序员，开篇当然是上代码了！&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;分享一个生成树的方法&lt;/code&gt;&lt;/p&gt;
@@ -39,8 +39,8 @@ function list_to_tree($list, $pk=&#39;id&#39;, $pid = &#39;pid&#39;, $child = &#
 &lt;/pre&gt;
 </description>
 				<pubDate>Wed, 30 Sep 2015 00:00:00 +0800</pubDate>
-				<link>/general/2015/09/30/hello-world.html</link>
-				<guid isPermaLink="true">/general/2015/09/30/hello-world.html</guid>
+				<link>/%E6%8A%80%E6%9C%AF/2015/09/30/hello-world.html</link>
+				<guid isPermaLink="true">/%E6%8A%80%E6%9C%AF/2015/09/30/hello-world.html</guid>
 			</item>
 		
 	</channel>

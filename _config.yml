@@ -13,7 +13,7 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: Kael
+      title: 逝水流年，不变初心，方得始终
 
 description: Stylish Jekyll Theme
 author:
