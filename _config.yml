@@ -6,19 +6,19 @@ exclude: ["README.md"] # files to exclude
 highlighter: pygments
 markdown: kramdown
 disqus: dbyll
-google_analytics: dbyll
+google_analytics: kael
 
 defaults:
   -
     scope:
       path: "" # empty string for all files
     values:
-      title: 逝水流年，不变初心，方得始终
+      title: 逝水流年，不变初心，方得始终。
 
 description: Stylish Jekyll Theme
 author:
   name: Kael
-  email: llj1589@vip.qq.com
+  email: kael.li1122@gmail.com
   github: kaelli1234
   weibo: codingggggg
   twitter: 
@@ -29,6 +29,7 @@ author:
 
 rss_path: feed.xml
 categories_path: categories.html
+about_path: about.html
 tags_path: tags.html
 
 BASE_PATH:

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>逝水流年，不变初心，方得始终</title>
+	<title>逝水流年，不变初心，方得始终。</title>
 	
 	<meta name="author" content="Kael">
 
@@ -41,6 +41,10 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
+
+			<a type="button" class="navbar-toggle nav-link" href="/about.html">
+				<i class="fa fa-user"></i>
+			</a>			
 			
 			<a type="button" class="navbar-toggle nav-link" href="http://github.com/kaelli1234">
 				<i class="fa fa-github"></i>
@@ -53,12 +57,12 @@
 			
 			
 			
-			<a type="button" class="navbar-toggle nav-link" href="mailto:llj1589@vip.qq.com">
+			<a type="button" class="navbar-toggle nav-link" href="mailto:kael.li1122@gmail.com">
 				<i class="fa fa-envelope"></i>
 			</a>
 			
 			<a class="navbar-brand" href="/">
-				<img src="http://www.gravatar.com/avatar/726351295ec82e145928582f595aa3aa?s=35" class="img-circle" />
+				<img src="/assets/avatar/soul.png" class="img-circle" />
 				
 			</a>
 		</div>
@@ -67,6 +71,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/about.html">About</a></li>
 				<li><a href="/categories.html">Categories</a></li>
 				<li><a href="/tags.html">Tags</a></li>
 			</ul>
@@ -80,6 +85,7 @@
 		</button>
 		<ul class="dropdown-menu" role="menu">
 			<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+			<li><a href="/about.html"><i class="fa fa-user"></i>About</a></li>
 			<li><a href="/categories.html"><i class="fa fa-folder"></i>Categories</a></li>
 			<li><a href="/tags.html"><i class="fa fa-tags"></i>Tags</a></li>
 			<li class="divider"></li>
@@ -106,6 +112,11 @@
 
 <div id="contact-list" class="text-center">
 	<ul class="list-unstyled list-inline">
+		<li>
+			<a class="btn btn-default btn-sm" href="/about.html">
+				<i class="fa fa-user fa-lg"></i>
+			</a>
+		</li>
 		
 		<li>
 			<a class="btn btn-default btn-sm" href="https://github.com/kaelli1234">
@@ -123,7 +134,7 @@
 		
 		
 		<li>
-			<a class="btn btn-default btn-sm" href="mailto:llj1589@vip.qq.com">
+			<a class="btn btn-default btn-sm" href="mailto:kael.li1122@gmail.com">
 				<i class="fa fa-envelope fa-lg"></i>
 			</a>
 		</li>
@@ -145,7 +156,7 @@
 
 	<div class="col-sm-9 col-sm-offset-3">
 		<div class="page-header">
-  <h1>逝水流年，不变初心，方得始终 </h1>
+  <h1>逝水流年，不变初心，方得始终。 </h1>
 </div>
 
 
@@ -244,17 +255,13 @@ function list_to_tree($list, $pk='id', $pid = 'pid', $child = '_child', $root = 
 
 <!-- Asynchronous Google Analytics snippet -->
 <script>
-  var _gaq = _gaq || [];
-  var pluginUrl =
- '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-  _gaq.push(['_setAccount', 'dbyll']);
-  _gaq.push(['_trackPageview']);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  ga('create', 'UA-68252443-1', 'auto');
+  ga('send', 'pageview');
+
 </script>
 
