@@ -1,10 +1,9 @@
 ---
 layout: post
 title: 开篇日志
-categories: [技术]
+categories: [Web]
 tags: [PHP]
 fullview: true
-comments: true
 ---
 
 作为一个程序员，开篇当然是上代码了！	

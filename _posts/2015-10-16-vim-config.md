@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title></title>
-		<description>Stylish Jekyll Theme</description>
-		<link>/</link>
-		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-		
-			<item>
-				<title>自用Vim配置以及molokai配色主题</title>
-				<description>&lt;h3 id=&quot;vimrc&quot;&gt;.vimrc&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;&quot;-----------------------------------基本------------------------------------
-&quot;处理未保存或只读文件时，弹出确认
+---
+layout: post
+title: 自用Vim配置以及molokai配色主题
+categories: [Linux]
+tags: [vim]
+shortinfo: Linux下自用的vim配置文件
+<!-- fullview: true -->
+---
+
+### .vimrc
+~~~
+"-----------------------------------基本------------------------------------
+"处理未保存或只读文件时，弹出确认
 set confirm
 
-&quot;自动保存
+"自动保存
 set autowrite
 
-&quot;历史记录数
+"历史记录数
 set history=1000
 
-&quot;编码设置
+"编码设置
 set fenc=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2313,cp936
 
@@ -27,91 +27,92 @@ set t_Co=256
 colorscheme molokai
 set background=dark
 
-&quot;语法高亮
-if has(&quot;syntax&quot;)
+"语法高亮
+if has("syntax")
 syntax on
 endif
 
-&quot;设置行号
+"设置行号
 set nu
 
-&quot;设置缩进
+"设置缩进
 set tabstop=4
 set sts=4
 set smartindent
 set expandtab
 set softtabstop=4
 set shiftwidth=4
-&quot;设置自动格式化,解决复制代码过来的时候出现格式混乱
-&quot;shift +v 开头 
-&quot;shift +g 结尾
-&quot;==
-&quot;格式化全文： gg=G
-&quot;自动缩进当前行： ==
+"设置自动格式化,解决复制代码过来的时候出现格式混乱
+"shift +v 开头 
+"shift +g 结尾
+"==
+"格式化全文： gg=G
+"自动缩进当前行： ==
 
 set formatoptions=tcrqn
 
-&quot;设置括号配对情况
+"设置括号配对情况
 set showmatch
 set matchtime=2
-&quot;设置没有自动备份
+"设置没有自动备份
 set noswapfile
 set nobackup
-&quot;设置纵向虚线对齐
-&quot;底部显示光标的位置的状态行
+"设置纵向虚线对齐
+"底部显示光标的位置的状态行
 set ruler
-&quot;设置查找
-&quot;搜索模式忽略大小写
+"设置查找
+"搜索模式忽略大小写
 set ignorecase
-&quot;如果搜索模式包含大小写则不适用ignorecase
+"如果搜索模式包含大小写则不适用ignorecase
 set smartcase
-&quot;禁止搜索到文件两端时重新搜索
+"禁止搜索到文件两端时重新搜索
 set nowrapscan
-&quot;高亮显示搜索到的文本
+"高亮显示搜索到的文本
 set hlsearch
-&quot;逐字符高亮
+"逐字符高亮
 set incsearch
-&quot;使用鼠标
-&quot;按住 shift 才由鼠标右键处理操作
+"使用鼠标
+"按住 shift 才由鼠标右键处理操作
 set mouse=a
-&quot;突出显示当前编辑行
+"突出显示当前编辑行
 set cursorline
-&quot;开启折叠，并设置空格来开关折叠
+"开启折叠，并设置空格来开关折叠
 set foldenable
 set foldmethod=syntax
 set foldcolumn=0
 setlocal foldlevel=1
 set foldclose=all
-nnoremap &amp;lt;space&amp;gt; @=((foldclosed(line(&#39;.&#39;))&amp;lt;0)?&#39;zc&#39;:&#39;zo&#39;)&amp;lt;CR&amp;gt;
-&quot;搜索和undo时不展开设置好的折叠
+nnoremap <space> @=((foldclosed(line('.'))<0)?'zc':'zo')<CR>
+"搜索和undo时不展开设置好的折叠
 set foldopen-=search
 set foldopen-=undo
-&lt;/code&gt;&lt;/pre&gt;
+~~~
 
-&lt;h3 id=&quot;vimcolorsmolokaivim&quot;&gt;.vim/colors/molokai.vim&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;&quot; Vim color file
-&quot;
-&quot; Author: Tomas Restrepo &amp;lt;tomas@winterdom.com&amp;gt;
-&quot; https://github.com/tomasr/molokai
-&quot;
-&quot; Note: Based on the Monokai theme for TextMate
-&quot; by Wimer Hazenberg and its darker variant
-&quot; by Hamish Stuart Macpherson
-&quot;
+### .vim/colors/molokai.vim
+~~~
+" Vim color file
+"
+" Author: Tomas Restrepo <tomas@winterdom.com>
+" https://github.com/tomasr/molokai
+"
+" Note: Based on the Monokai theme for TextMate
+" by Wimer Hazenberg and its darker variant
+" by Hamish Stuart Macpherson
+"
 
 hi clear
 
-if version &amp;gt; 580
-    &quot; no guarantees for version 5.8 and below, but this makes it stop
-    &quot; complaining
+if version > 580
+    " no guarantees for version 5.8 and below, but this makes it stop
+    " complaining
     hi clear
-    if exists(&quot;syntax_on&quot;)
+    if exists("syntax_on")
         syntax reset
     endif
 endif
-let g:colors_name=&quot;molokai&quot;
+let g:colors_name="molokai"
 
-if exists(&quot;g:molokai_original&quot;)
+if exists("g:molokai_original")
     let s:molokai_original = g:molokai_original
 else
     let s:molokai_original = 0
@@ -156,7 +157,7 @@ hi ModeMsg         guifg=#E6DB74
 hi MoreMsg         guifg=#E6DB74
 hi Operator        guifg=#F92672
 
-&quot; complete menu
+" complete menu
 hi Pmenu           guifg=#66D9EF guibg=#000000
 hi PmenuSel                      guibg=#808080
 hi PmenuSbar                     guibg=#080808
@@ -167,12 +168,12 @@ hi PreProc         guifg=#A6E22E
 hi Question        guifg=#66D9EF
 hi Repeat          guifg=#F92672               gui=bold
 hi Search          guifg=#000000 guibg=#FFE792
-&quot; marks
+" marks
 hi SignColumn      guifg=#A6E22E guibg=#232526
 hi SpecialChar     guifg=#F92672               gui=bold
 hi SpecialComment  guifg=#7E8E91               gui=bold
 hi Special         guifg=#66D9EF guibg=bg      gui=italic
-if has(&quot;spell&quot;)
+if has("spell")
     hi SpellBad    guisp=#FF0000 gui=undercurl
     hi SpellCap    guisp=#7070F0 gui=undercurl
     hi SpellLocal  guisp=#70F0F0 gui=undercurl
@@ -222,10 +223,10 @@ else
    hi SpecialKey      guifg=#465457
 end
 
-&quot;
-&quot; Support for 256-color terminal
-&quot;
-if &amp;amp;t_Co &amp;gt; 255
+"
+" Support for 256-color terminal
+"
+if &t_Co > 255
     if s:molokai_original == 1
         hi Normal                   ctermbg=234
         hi CursorLine               ctermbg=235   cterm=none
@@ -273,7 +274,7 @@ if &amp;amp;t_Co &amp;gt; 255
     hi MoreMsg         ctermfg=229
     hi Operator        ctermfg=161
  
-    &quot; complete menu
+    " complete menu
     hi Pmenu           ctermfg=81  ctermbg=16
     hi PmenuSel        ctermfg=255 ctermbg=242
     hi PmenuSbar                   ctermbg=232
@@ -285,12 +286,12 @@ if &amp;amp;t_Co &amp;gt; 255
     hi Repeat          ctermfg=161               cterm=bold
     hi Search          ctermfg=0   ctermbg=222   cterm=NONE
  
-    &quot; marks column
+    " marks column
     hi SignColumn      ctermfg=118 ctermbg=235
     hi SpecialChar     ctermfg=161               cterm=bold
     hi SpecialComment  ctermfg=245               cterm=bold
     hi Special         ctermfg=81
-    if has(&quot;spell&quot;)
+    if has("spell")
         hi SpellBad                ctermbg=52
         hi SpellCap                ctermbg=17
         hi SpellLocal              ctermbg=17
@@ -323,7 +324,7 @@ if &amp;amp;t_Co &amp;gt; 255
  
     hi SpecialKey      ctermfg=59
  
-    if exists(&quot;g:rehash256&quot;) &amp;amp;&amp;amp; g:rehash256 == 1
+    if exists("g:rehash256") && g:rehash256 == 1
         hi Normal       ctermfg=252 ctermbg=234
         hi CursorLine               ctermbg=236   cterm=none
         hi CursorLineNr ctermfg=208               cterm=none
@@ -362,52 +363,7 @@ if &amp;amp;t_Co &amp;gt; 255
     endif
 end
 
-&quot; Must be at the end, because of ctermbg=234 bug.
-&quot; https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
+" Must be at the end, because of ctermbg=234 bug.
+" https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-				<pubDate>Fri, 16 Oct 2015 00:00:00 +0800</pubDate>
-				<link>/linux/2015/10/16/vim-config.html</link>
-				<guid isPermaLink="true">/linux/2015/10/16/vim-config.html</guid>
-			</item>
-		
-			<item>
-				<title>开篇日志</title>
-				<description>&lt;p&gt;作为一个程序员，开篇当然是上代码了！&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;分享一个生成树的方法&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;
-function list_to_tree($list, $pk=&#39;id&#39;, $pid = &#39;pid&#39;, $child = &#39;_child&#39;, $root = 0) {
-	// 创建Tree
-	$tree = array();
-	if(is_array($list)) {
-    	// 创建基于主键的数组引用
-        $refer = array();
-        foreach ($list as $key =&amp;gt; $data) {
-            $refer[$data[$pk]] =&amp;amp; $list[$key];
-        }
-        foreach ($list as $key =&amp;gt; $data) {
-            // 判断是否存在parent
-            $parentId =  $data[$pid];
-            if ($root == $parentId) {
-                $tree[] =&amp;amp; $list[$key];
-            }else{
-                if (isset($refer[$parentId])) {
-                    $parent =&amp;amp; $refer[$parentId];
-                    $parent[$child][] =&amp;amp; $list[$key];
-                }
-            }
-        }
-    }
-    return $tree;
-}
-&lt;/pre&gt;
-</description>
-				<pubDate>Wed, 30 Sep 2015 00:00:00 +0800</pubDate>
-				<link>/web/2015/09/30/hello-world.html</link>
-				<guid isPermaLink="true">/web/2015/09/30/hello-world.html</guid>
-			</item>
-		
-	</channel>
-</rss>
+~~~

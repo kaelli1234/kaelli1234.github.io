@@ -2,8 +2,397 @@
 layout: page
 title: 关于我
 ---
-<article class="home">
 
-<p>About</p>
+<!-- resume css -->
+<!--自适应css-->
+<link href="{{ site.BASE_PATH }}/assets/resources/resume/css/responsive.css" rel="stylesheet">
+<!--字体图标cdd-->
+<link href="{{ site.BASE_PATH }}/assets/resources/resume/css/font.css" rel="stylesheet" type="text/css">
+<!-- resume css -->
 
-</article>
+<div class="main">
+    <div class="content">
+
+        <!--header-->
+        <div class="header clearfix">
+            <div class="avatar">
+                <a href="javascript:;" class="avatar_pic circle"><em class="circle doing">详细</em></a>
+                <b class="doing r5">Man</b>
+            </div>
+            <div class="base">
+                <p class="desc">Hello my name is</p>
+                <h2>李林健</h2>
+                <p>PHP 、Web / 移动互联网</p>
+                <span>
+                    <p><i class="fa fa-map-marker fa-lg"></i>上海</p>
+                    <p><a class="tel_me" href="mailto:{{ site.author.email }}">
+						<i class="fa fa-envelope fa-lg"></i>联系Me
+					</a></p>
+                </span>
+            </div>
+        </div>
+
+        <!--information-->
+        <div class="information clearfix">
+
+            <!--left-->
+            <div class="info_area info_left info_content">
+
+                <h5>我的故事</h5>
+                <p class="desc"><em class="count">08</em>年出生在哈尔滨，混了个文凭...</p>
+                <!-- s1~s5 为对应右侧 时间点 -->
+                <p class="desc s1"><em class="count">09</em>年做了第一份工作，工作很辛苦，也很喜欢，就这样一坐就做了1年，后来觉得公司不太适合自己就选择撤了。</p>
+                <p class="desc s2"><em class="count">10</em>年做了第一份工作，工作很辛苦，也很喜欢，就这样一坐就做了1年，后来觉得公司不太适合自己就选择撤了。</p>
+                <p class="desc"><em class="count">11</em>年上够了，呆了一年。</p>
+                <p class="desc s3"><em class="count">12</em>年做了第一份工作，工作很辛苦，也很喜欢，就这样一坐就做了1年，后来觉得公司不太适合自己就选择撤了。</p>
+                <p class="desc s4"><em class="count">13</em>年做了第一份工作，工作很辛苦，也很喜欢，就这样一坐就做了1年，后来觉得公司不太适合自己就选择撤了。</p>
+                <p class="desc s5"><em class="count">14</em>年做了第一份工作，工作很辛苦，也很喜欢，就这样一坐就做了1年，后来觉得公司不太适合自己就选择撤了。</p>
+                <p class="desc">以上随便写的，s1 为第一个时间点，与右侧相对应</p>
+
+                <h5>我的/参与的一些项目</h5>
+                <ul>
+                    <li class="clearfix">
+                        <div class="con">
+                            <h3><i aria-hidden="true" data-icon="&#x5b;"></i>团队协作开发<em>(公司项目)</em></h3>
+                            <p>一个在线团队任务协作工具</p>
+                        </div>
+                        <a href="javascript:;" class="btn_go btn_green product_1 r5">了解细节<i aria-hidden="true" data-icon="&#x35;"></i></a>
+                    </li>
+                    <li class="clearfix">
+                        <div class="con">
+                            <h3><i aria-hidden="true" data-icon="&#x5b;"></i>哈市集<em>(个人项目)</em></h3>
+                            <p>精挑细选的衣物导购平台</p>
+                        </div>
+                        <a href="javascript:;" class="btn_go btn_green product_2 r5">了解细节<i aria-hidden="true" data-icon="&#x35;"></i></a>
+                    </li>
+                    <li class="clearfix">
+                        <div class="con">
+                            <h3><i aria-hidden="true" data-icon="&#x5b;"></i>优你网<em>(公司项目)</em></h3>
+                            <p>大学生兼职平台</p>
+                        </div>
+                        <a href="javascript:;" class="btn_go btn_green product_3 r5">了解细节<i aria-hidden="true" data-icon="&#x35;"></i></a>
+                    </li>
+                    <li class="clearfix">
+                        <div class="con">
+                            <h3><i aria-hidden="true" data-icon="&#x5b;"></i>云边轻博客<em>(团队项目)</em></h3>
+                            <p>开源轻博客2.0</p>
+                        </div>
+                        <a href="javascript:;" class="btn_go btn_green product_4 r5">了解细节<i aria-hidden="true" data-icon="&#x35;"></i></a>
+                    </li>
+                    <li class="clearfix">
+                        <div class="con">
+                            <h3><i aria-hidden="true" data-icon="&#x5b;"></i>发泄吧<em>(个人项目)</em></h3>
+                            <p>发泄社区，2012年出售</p>
+                        </div>
+                        <a href="javascript:;" class="btn_go btn_green r5 product_5">了解细节<i aria-hidden="true" data-icon="&#x35;"></i></a>
+                    </li>
+                    <li class="clearfix">
+                        <div class="con">
+                            <a href="javascript:;" class="btn_more r5">更多作品</a>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+
+            <!--right-->
+            <div class="info_area info_right info_timeline">
+                <h5><i class="fa fa-clock-o fa-lg"></i>时间线</h5>
+                <ul>
+                    <li class="clearfix top" id="s5">
+                        <!--list样式-->
+                        <div class="dot"><b></b></div>
+                        <!--内容-->
+                        <div class="con">
+                            <h3>公司一</h3>
+                            <p>职位名称</p>
+                            <p class="desc">2010.1 - 2011.1</p>
+                        </div>
+                    </li>
+                    <li class="clearfix" id="s4">
+                        <!--list样式-->
+                        <div class="dot"><b></b></div>
+                        <!--内容-->
+                        <div class="con">
+                            <h3>公司二</h3>
+                            <p>职位名称</p>
+                            <p class="desc">2011.1 - 2012.1</p>
+                        </div>
+                    </li>
+                    <li class="clearfix" id="s3">
+                        <!--list样式-->
+                        <div class="dot"><b></b></div>
+                        <!--内容-->
+                        <div class="con">
+                            <h3>公司三</h3>
+                            <p>职位名称</p>
+                            <p class="desc">2012.1 - 2013.1</p>
+                        </div>
+                    </li>
+                    <li class="clearfix" id="s2">
+                        <!--list样式-->
+                        <div class="dot"><b></b></div>
+                        <!--内容-->
+                        <div class="con">
+                            <h3>公司四</h3>
+                            <p>职位名称</p>
+                            <p class="desc">2014.1 - 2015.1</p>
+                        </div>
+                    </li>
+                    <li class="clearfix bottom" id="s1">
+                        <!--list样式-->
+                        <div class="dot"><b></b></div>
+                        <!--内容-->
+                        <div class="con">
+                            <h3>公司五</h3>
+                            <p>职位名称</p>
+                            <p class="desc">2015.1 - 2016.1</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <h5>我的技能点</h5>
+
+                <dl class="clearfix">
+                    <dt><h6><i aria-hidden="true" data-icon="&#xe00d;"></i>Web<h6></dt>
+                    <dd></dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>HTML<em>5</em> & CSS<em>3</em></dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Javascript & Jquery</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Bootstrap & Foundation</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Less</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix mt20">
+                    <dt><h6><i aria-hidden="true" data-icon="&#xe00b;"></i>Phone & Pad<h6></dt>
+                    <dd></dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Phonegap</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Jqmobi (App Framework)</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Ionic (App Framework)</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix mt20">
+                    <dt><h6><i aria-hidden="true" data-icon="&#xe007;"></i>Design Tools<h6></dt>
+                    <dd></dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Adobe Fireworks</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Adobe Photoshop</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt>Adobe Illustrator</dt>
+                    <dd>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <b></b>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                        <em></em>
+                    </dd>
+                </dl>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+        
+
+<!--个人基本信息-->
+<div class="tip_avatar">
+    <a href="javascript:;" class="tip_close" aria-hidden="true" data-icon="&#x4d;"></a>
+    <div class="tip_avatar_con">
+        <div class="tip_right">
+            <p class="en mt">Hello my name is</p>
+            <h2>名字</h2>
+            <p>掌握技能/从事行业</p>
+            <p class="mt20">联系方式</p>                 
+            <p><i aria-hidden="true" data-icon="&#xe010;"></i>xxxx@gmail.com</p>
+            <p><i aria-hidden="true" data-icon="&#xe00b;"></i>17000000000</p>
+            <p><i aria-hidden="true" data-icon="&#xe066;"></i>微信名称</p>
+            <p class="mt20"><span class="wechat"></span></p>
+        </div>
+        <!--如果依然使用该头像请不要删掉()里的内容-->
+        <p class="desc">Cartoon just like me (Design by Jameskelly)</p>
+    </div>
+</div>
+<div class="tip_avatar_bg"></div>
+
+</div>
+
+<div class="bye"><span>再见</span></div>
+
+<!--Jquery 2.1 不支持ie6、7、8-->
+<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/resume/js/jquery-2.1.1.min.js"></script>
+
+<!--jquery 局部打印-->
+<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/resume/js/jQuery.print.js"></script>
+
+<!--jquery 动画-->
+<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/resume/js/jquery.transit.min.js"></script>
+
+<!--jquery 轮播-基于bootstrap carousel-->
+<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/resume/js/carousel.min.js"></script>
+
+<!--jquery annyang sound control-->
+<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/resume/js/annyang.min.js"></script>
+
+<!--effect-->
+<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/resume/js/common.js"></script>
