@@ -276,7 +276,7 @@ i { font-size: 16px; }
 .base p.desc { color: #ccc; }
 .base h2 { font-size: 32px; color: #999; font-weight: normal; padding: 5px 0; }
 .base span p { padding: 0 0 10px; }
-.base span i { font-size: 16px; color: #999; margin-right: 5px; float: left; line-height: 20px;}
+.base span i { font-size: 16px; color: #999; margin-right: 5px; float: left; line-height: 20px;width: 20px;}
 .tel_me { color: #aaa; }
 .tel_me:hover { color: #999; border-bottom: 2px #999 solid; }
 .information { width: 100%; }
@@ -391,3 +391,5 @@ i { font-size: 16px; }
 .carousel-control i { font-size: 16px; }
 .carousel-control:hover,.tip_area_close:hover { background-color: rgba(0,0,0,0.6); }
 .carousel-control:active,.tip_area_close:active { background-color: rgba(0,0,0,0.7); }
+
+#location-icon {position: relative;font-size: 20px;left: 2px;}
