@@ -8,7 +8,7 @@ markdown: kramdown
 kramdown:
   input:  GFM
   use_coderay: true
-# google_analytics: kael
+  google_analytics: kael
 
 defaults:
   -
