@@ -5,8 +5,10 @@ paginate_path: "page:num"
 exclude: ["README.md"] # files to exclude
 highlighter: pygments
 markdown: kramdown
-disqus: dbyll
-google_analytics: kael
+kramdown:
+  input:  GFM
+  use_coderay: true
+  google_analytics: kael
 
 defaults:
   -
@@ -18,7 +20,7 @@ defaults:
 description: Stylish Jekyll Theme
 author:
   name: Kael
-  email: kael.li1122@gmail.com
+  email: llj1589@vip.qq.com
   github: kaelli1234
   weibo: codingggggg
   twitter: 
@@ -31,5 +33,6 @@ rss_path: feed.xml
 categories_path: categories.html
 about_path: about.html
 tags_path: tags.html
+host_name: http://kaelli1234.github.io
 
 BASE_PATH:
