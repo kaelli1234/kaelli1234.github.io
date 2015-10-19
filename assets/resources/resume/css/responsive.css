@@ -7,7 +7,7 @@
 	.base,.info_right { float: right; }
 	.info_left,.info_right { width: 47%; }
 	.base { width: calc(100% - 190px); width: -moz-calc(100% - 190px); width: -webkit-calc(100% - 190px); }
-	.base span { position: absolute; right: 100px; top: 27px; }
+	.base span { position: absolute; right: 260px; top: 70px; }
 	.info_timeline dl dt { width: 200px; }
 	.info_timeline dl dd { width: calc(100% - 200px); width: -moz-calc(100% - 200px); width: -webkit-calc(100% - 200px); }
 	.footer a { float: right; }
@@ -16,9 +16,9 @@
 	.info_content.over .desc { height: 0; margin: 0; }
 	.info_content.over .s5.curr { height: 474px }
 	.info_content.over .s4.curr { padding-top: 100px; height: 374px }
-	.info_content.over .s3.curr { padding-top: 200px; height: 274px }
-	.info_content.over .s2.curr { padding-top: 300px; height: 174px }
-	.info_content.over .s1.curr { padding-top: 400px; height: 74px }
+	.info_content.over .s3.curr { padding-top: 150px; height: 300px }
+	.info_content.over .s2.curr { padding-top: 150px; height: 300px }
+	.info_content.over .s1.curr { padding-top: 150px; height: 300px }
 	.info_content ul li .btn_go { height: 30px; line-height: 30px; padding: 0 5px 0 10px; position: absolute; right: 10px; top: 5px; font-weight: normal; display: none; }
 	.info_content ul li:hover .btn_go { display: block; }
 
