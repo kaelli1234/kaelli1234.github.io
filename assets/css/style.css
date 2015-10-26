@@ -4,6 +4,8 @@ body{
 	color: #2c3e50;
 }
 
+pre {padding: 0;}
+
 .sidebar {
 	position: fixed;
 	top: 0px;

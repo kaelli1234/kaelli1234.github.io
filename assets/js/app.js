@@ -29,4 +29,8 @@ $( document ).ready(function() {
         $('.info_content .desc').removeClass('curr');
     }); 
 
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
 });
