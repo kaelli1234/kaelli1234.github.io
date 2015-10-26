@@ -13,9 +13,9 @@ php-redis版本: `2.2.1`
 #### 背景：
 新老项目使用的封装PHP Redis类不一样(主要是以下选项)：
 
-~~~
+{% highlight php %}
 $redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_IGBINARY);
-~~~
+{% endhighlight %}
 
 导致使用设置过该option的封装的Redis类获取由未设置该选项的Redis类生成的key时程序会down掉，反之获取的key值为乱码。
 

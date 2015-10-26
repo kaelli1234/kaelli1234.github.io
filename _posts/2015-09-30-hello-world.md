@@ -9,7 +9,8 @@ fullview: true
 作为一个程序员，开篇当然是上代码了！	
 
 `分享一个生成树的方法`
-<pre>
+
+{% highlight php linenos %}
 function list_to_tree($list, $pk='id', $pid = 'pid', $child = '_child', $root = 0) {
 	// 创建Tree
 	$tree = array();
@@ -34,4 +35,4 @@ function list_to_tree($list, $pk='id', $pid = 'pid', $child = '_child', $root = 
     }
     return $tree;
 }
-</pre>
+{% endhighlight %}
