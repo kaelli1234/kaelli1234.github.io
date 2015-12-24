@@ -7,7 +7,8 @@ highlighter: pygments
 markdown: kramdown
 kramdown:
   input:  GFM
-  use_coderay: true
+  enable_coderay: true
+gems: ["jekyll-paginate", "jekyll-gist"]
 google_analytics: kael
 
 defaults:
@@ -23,9 +24,9 @@ author:
   email: llj1589@vip.qq.com
   github: kaelli1234
   weibo: codingggggg
-  twitter: 
-  pinterest: 
-  linkedin: 
+  twitter:
+  pinterest:
+  linkedin:
   bio: '不乱于心，不困于情。不畏将来，不念过往。'
   email_md5: 726351295ec82e145928582f595aa3aa
 
