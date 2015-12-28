@@ -8,7 +8,7 @@ markdown: kramdown
 kramdown:
   input:  GFM
   enable_coderay: true
-gems: ["jekyll-paginate", "jekyll-gist"]
+gems: ["jekyll-paginate", "jekyll-gist", "jekyll-sitemap"]
 google_analytics: kael
 
 defaults:
@@ -17,10 +17,11 @@ defaults:
       path: "" # empty string for all files
     values:
       title: 逝水流年，不变初心，方得始终。
+      description: "blog, 个人博客, GitHub Pages"
 
 description: Stylish Jekyll Theme
 author:
-  name: Kael
+  name: Kael Li - lilinjian
   email: llj1589@vip.qq.com
   github: kaelli1234
   weibo: codingggggg

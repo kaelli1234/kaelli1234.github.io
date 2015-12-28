@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 开篇日志
+description: php, function, tree
 categories: [Web]
 tags: [PHP]
 shortinfo: 作为一个程序员，开篇当然是上代码了！

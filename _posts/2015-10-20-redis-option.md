@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Redis::OPT_SERIALIZER
+description: redis, redis-php, php-redis, redis setOption, OPT_SERIALIZER, SERIALIZER_IGBINARY
 categories: [Web]
 tags: [Redis]
 shortinfo: 标记一个最近使用redis遇到的坑

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>{{ page.title }}</title>
 	{% if page.description %}
-	<meta name="description" content="{{ page.description }}">
+	<meta name="description" content="{{ page.description }}, {{ site.author.name }}">
 	{% endif %}
 	<meta name="author" content="{{ site.author.name }}">
 
@@ -15,7 +15,7 @@
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	
+
 	<!-- Le styles -->
 	<link href="{{ site.BASE_PATH }}/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{ site.BASE_PATH }}/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
 
 			<a type="button" class="navbar-toggle nav-link" href="/about.html">
 				<i class="fa fa-user"></i>
-			</a>			
+			</a>
 			{% if site.author.github %}
 			<a type="button" class="navbar-toggle nav-link" href="http://github.com/{{ site.author.github }}">
 				<i class="fa fa-github"></i>
