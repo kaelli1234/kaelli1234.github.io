@@ -7,7 +7,7 @@ highlighter: rouge
 markdown: kramdown
 kramdown:
   input:  GFM
-  enable_coderay: true
+  syntax_highlighter: true
 gems: ["jekyll-paginate", "jekyll-gist", "jekyll-sitemap"]
 google_analytics: kael
 
