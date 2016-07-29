@@ -108,6 +108,10 @@ article {
 	padding: 0 5% 0;
 }
 
+article p {
+	line-height: 1.7;
+}
+
 article.home div a, article.home pre a { color: #2c3e50; }
 article.home div a:hover, article.home pre a:hover { color: #2c3e50; text-decoration: none; }
 article img { max-width: 100%; }
@@ -176,7 +180,7 @@ footer {
     position: fixed;
     top: 45px;
     right: 45px;
-    z-index: 2000;
+    z-index: 20;
 }
 #nav-menu .dropdown-menu {
     left: inherit;

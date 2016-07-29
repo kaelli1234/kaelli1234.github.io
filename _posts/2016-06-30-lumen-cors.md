@@ -7,7 +7,7 @@ tags: [PHP, Lumen]
 shortinfo: 使用Lumen框架如何解决跨域问题
 ---
 
-#### **使用Lumen框架如何解决跨域问题**
+### **使用Lumen框架如何解决跨域问题**
 跨域问题想必是每个从事web相关开发的同学经常遇到的问题，特别是现在越来越多的应用采用的前后端分离的开发模式，所以解决跨域问题成了大家必不可少的一项技能。最近在使用Lumen框架开发时也遇到了这个问题。
 
 进入主题之前我们先来个铺垫，首先我们来了解一下什么是跨域，以及一些解决方案 [这是铺垫](http://www.cnblogs.com/davidwang456/p/3977627.html)
@@ -86,10 +86,10 @@ $app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
 
 看到这里，问题是已经解决了。但有一个问题我开始一直想不明白，CatchAllOptionsRequestsProvider存在的意义是什么，为什么需要单独处理OPTIONS的请求？不是一个中间件就可以全部处理了吗？
 github上也有人跟我有同样的疑问
-![lumen-bootstrap-app]({{ site.BASE_PATH }}/assets/images/lumen-cors-1.webp)
+![lumen-bootstrap-app]({{ site.BASE_PATH }}/assets/images/lumen-cors-1.webp){:data-action="zoom"}
 
 直到前段时间再去看时才看到下面这位大神的评论
-![lumen-bootstrap-app]({{ site.BASE_PATH }}/assets/images/lumen-cors-2.webp)
+![lumen-bootstrap-app]({{ site.BASE_PATH }}/assets/images/lumen-cors-2.webp){:data-action="zoom"}
 
 在结合上面的铺垫，原来
 
@@ -97,7 +97,7 @@ github上也有人跟我有同样的疑问
 
 由于在Lumen的路由里并未定义对应的options请求，所以框架直接返回405了。请求并不会被分发，所以不会被中间件处理。因此才需要用```CatchAllOptionsRequestsProvider.php```来获取请求，并对options的请求单独处理。
 
-参考：
+**参考：**
 
 [http://www.cnblogs.com/davidwang456/p/3977627.html](http://www.cnblogs.com/davidwang456/p/3977627.html)
 [https://gist.github.com/danharper/06d2386f0b826b669552](https://gist.github.com/danharper/06d2386f0b826b669552)

@@ -7,7 +7,7 @@ tags: [PHP]
 shortinfo: 最近新项目中使用较高版本的php（php5.6），标记一下使用curl上传文件时遇到的坑
 ---
 
-#### php5.6 CURLFile
+### php5.6 CURLFile
 
 新项目中要完成一个上传文件的接口，要写个自测接口时遇到的坑。。。
 
