@@ -86,10 +86,10 @@ $app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
 
 看到这里，问题是已经解决了。但有一个问题我开始一直想不明白，CatchAllOptionsRequestsProvider存在的意义是什么，为什么需要单独处理OPTIONS的请求？不是一个中间件就可以全部处理了吗？
 github上也有人跟我有同样的疑问
-![lumen-bootstrap-app]({{ site.BASE_PATH }}/assets/images/lumen-cors-1.webp){:data-action="zoom"}
+![lumen-bootstrap-app]({{ site.BASE_PATH }}/assets/images/lumen-cors-1.jpg){:data-action="zoom"}
 
 直到前段时间再去看时才看到下面这位大神的评论
-![lumen-bootstrap-app]({{ site.BASE_PATH }}/assets/images/lumen-cors-2.webp){:data-action="zoom"}
+![lumen-bootstrap-app]({{ site.BASE_PATH }}/assets/images/lumen-cors-2.jpg){:data-action="zoom"}
 
 在结合上面的铺垫，原来
 
