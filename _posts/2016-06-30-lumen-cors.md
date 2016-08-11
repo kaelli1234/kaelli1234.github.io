@@ -97,7 +97,9 @@ github上也有人跟我有同样的疑问
 
 由于在Lumen的路由里并未定义对应的options请求，所以框架直接返回405了。请求并不会被分发，所以不会被中间件处理。因此才需要用```CatchAllOptionsRequestsProvider.php```来获取请求，并对options的请求单独处理。
 
-**参考：**
+---
 
-[http://www.cnblogs.com/davidwang456/p/3977627.html](http://www.cnblogs.com/davidwang456/p/3977627.html)
-[https://gist.github.com/danharper/06d2386f0b826b669552](https://gist.github.com/danharper/06d2386f0b826b669552)
+**参考**
+
+* [http://www.cnblogs.com/davidwang456/p/3977627.html](http://www.cnblogs.com/davidwang456/p/3977627.html){:target="_blank"}
+* [https://gist.github.com/danharper/06d2386f0b826b669552](https://gist.github.com/danharper/06d2386f0b826b669552){:target="_blank"}
