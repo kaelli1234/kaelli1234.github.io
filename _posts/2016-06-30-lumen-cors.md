@@ -20,7 +20,7 @@ shortinfo: 使用Lumen框架如何解决跨域问题
 
 新增中间件，```LUMEN/app/Http/Middleware/CorsMiddleware.php```
 
-```
+```php
 namespace App\Http\Middleware;
 
 use Closure;
@@ -49,7 +49,7 @@ class CorsMiddleware
 
 定义ServiceProvider，```LUMEN/app/Providers/CatchAllOptionsRequestsProvider.php```
 
-```
+```php
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -76,7 +76,7 @@ class CatchAllOptionsRequestsProvider extends ServiceProvider
 
 在```LUMEN/bootstrap/app.php```中加载对应的中间件，注册ServiceProvider。
 
-```
+```php
 $app->routeMiddleware([
     'cors' => App\Http\Middleware\CorsMiddleware::class,
 ]);
