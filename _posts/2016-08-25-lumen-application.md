@@ -9,87 +9,18 @@ shortinfo: Lumen框架在同一域名多应用环境下的部署问题
 
 ### **在同一域名下部署多个应用时，使用Lumen框架遇到的问题**
 
-官方文档的推荐一般是通过配置网站的根目录至```wwwroot/LUMEN/public```。如果服务器上只有Lumen一个应用是没有问题的，但是如果服务器上同时部署了多个应用，想通过```wwwroot```的相对路径```http://DOMAIN/lumen/public/```来访问框架url时就会出现```NotFoundHttpException```的异常。
+官方文档的推荐一般是通过配置网站的根目录至```wwwroot/LUMEN/public/```。如果服务器上只有Lumen一个应用是没有问题的，但是如果服务器上同时部署了多个应用，想通过```wwwroot```的相对路径```http://DOMAIN/lumen/public/```来访问框架url时就会出现```NotFoundHttpException```的异常。
 
 根据错误提示，定位到文件
-```LUMEN/trunk/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php中370行：```
+```LUMEN/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php```中370行：
 
-```
-/**
- * Dispatch the incoming request.
- *
- * @param  SymfonyRequest|null  $request
- * @return Response
- */
-public function dispatch($request = null)
-{
-    list($method, $pathInfo) = $this->parseIncomingRequest($request);
+![lumen-application]({{ site.BASE_PATH }}/assets/images/lumen-application-1.jpg){:data-action="zoom"}
 
-    try {
-        return $this->sendThroughPipeline($this->middleware, function () use ($method, $pathInfo) {
-            if (isset($this->routes[$method.$pathInfo])) {
-                return $this->handleFoundRoute([true, $this->routes[$method.$pathInfo]['action'], []]);
-            }
-
-            return $this->handleDispatcherResponse(
-                $this->createDispatcher()->dispatch($method, $pathInfo)
-            );
-        });
-    } catch (Exception $e) {
-        return $this->sendExceptionToHandler($e);
-    } catch (Throwable $e) {
-        return $this->sendExceptionToHandler($e);
-    }
-}
-
-/**
- * Parse the incoming request and return the method and path info.
- *
- * @param  \Illuminate\Http\Request|null  $request
- * @return array
- */
-protected function parseIncomingRequest($request)
-{
-    if ($request) {
-        $this->instance(Request::class, $this->prepareRequest($request));
-        $this->ranServiceBinders['registerRequestBindings'] = true;
-
-        return [$request->getMethod(), $request->getPathInfo()];
-    } else {
-        return [$this->getMethod(), $this->getPathInfo()];
-    }
-}
-```
+![lumen-application]({{ site.BASE_PATH }}/assets/images/lumen-application-2.jpg){:data-action="zoom"}
 
 框架中的LUMEN/public/index.php默认是```$app->run();```是不传$request的，对应调用的方法如下：
 
-```
-/**
- * Get the current HTTP request method.
- *
- * @return string
- */
-protected function getMethod()
-{
-    if (isset($_POST['_method'])) {
-        return strtoupper($_POST['_method']);
-    } else {
-        return $_SERVER['REQUEST_METHOD'];
-    }
-}
-
-/**
- * Get the current HTTP path info.
- *
- * @return string
- */
-protected function getPathInfo()
-{
-    $query = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
-
-    return '/'.trim(str_replace('?'.$query, '', $_SERVER['REQUEST_URI']), '/');
-}
-```
+![lumen-application]({{ site.BASE_PATH }}/assets/images/lumen-application-3.jpg){:data-action="zoom"}
 
 可见通过此方法获取的path，如果存在多应用的情况下，$this->routes获取是错误的。
 
