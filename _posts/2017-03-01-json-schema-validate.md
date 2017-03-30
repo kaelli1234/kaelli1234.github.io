@@ -34,7 +34,7 @@ shortinfo: php严格校验JSON数据格式的方法
                 "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"   //验证id是否符合该正则表达式的规则
             },
             "name": {
-                "type": "string"    //name的类型为string
+                "type": "string",    //name的类型为string
                 "maxLength": 10 //最大长度为10
             },
             "url": {
@@ -55,7 +55,7 @@ shortinfo: php严格校验JSON数据格式的方法
                 ]
             }
         },
-        "additionalProperties": false //不允许除了items.properties定义以外的字段
+        "additionalProperties": false, //不允许除了items.properties定义以外的字段
         "required": ["id", "name", "price"] //id,name,price字段必填
     }
 }
