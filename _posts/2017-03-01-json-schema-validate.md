@@ -20,43 +20,43 @@ shortinfo: php严格校验JSON数据格式的方法
 ```
 {
     "title": "Product set",
-    "type": "array",    // 原数据格式为数组
-    "minItems": 1,  // 最少1个元素
-    "maxItems": 10, // 最多10个元素
-    "uniqueItems": true,    // 数据重复判断
+    "type": "array",    //原数据格式为数组
+    "minItems": 1,  //最少1个元素
+    "maxItems": 10, //最多10个元素
+    "uniqueItems": true,    //数据重复判断
     "items": {
         "title": "Product",
-        "type": "object",   // 数组元素的值为对象
+        "type": "object",   //数组元素的值为对象
         "properties": {
             "id": {
-                "description": "The unique identifier for a product",   // id字段描述
-                "type": "string",   // id的类型为string
-                "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"   // 验证id是否符合该正则表达式的规则
+                "description": "The unique identifier for a product",   //id字段描述
+                "type": "string",   //id的类型为string
+                "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"   //验证id是否符合该正则表达式的规则
             },
             "name": {
-                "type": "string"    // name的类型为string
-                "maxLength": 10 // 最大长度为10
+                "type": "string"    //name的类型为string
+                "maxLength": 10 //最大长度为10
             },
             "url": {
-                "type": "string",   // url的类型为string
-                "format": "uri" // 并且符合URI规则
+                "type": "string",   //url的类型为string
+                "format": "uri" //并且符合URI规则
             },
             "price": {
-                "type": "number",   // price的类型为number
-                "minimum": 0,   // 最小值为0
-                "exclusiveMinimum": true    // 该字段为true时验证 price > 0, false时验证 price >= 0
+                "type": "number",   //price的类型为number
+                "minimum": 0,   //最小值为0
+                "exclusiveMinimum": true    //该字段为true时验证price>0, false时验证price>=0
             },
             "tags": {
-                "type": "string",   // tags的类型为string
-                "enum": [   // 并且值为enum中之一
+                "type": "string",   //tags的类型为string
+                "enum": [   //并且值为enum中之一
                     "food",
                     "fruit",
                     "juice"
                 ]
             }
         },
-        "additionalProperties": false // 不允许除了items.properties定义以外的字段
-        "required": ["id", "name", "price"] // id, name, price 字段必填
+        "additionalProperties": false //不允许除了items.properties定义以外的字段
+        "required": ["id", "name", "price"] //id,name,price字段必填
     }
 }
 ```
