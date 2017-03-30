@@ -17,7 +17,7 @@ shortinfo: php严格校验JSON数据格式的方法
 
 主要说一下JSON Schema文件的定义问题，👇结合一个比较复杂的例子来说一下Schema各个参数的作用
 
-```json
+```JSON
 {
     "title": "Product set",
     "type": "array",    //原数据格式为数组
@@ -44,7 +44,7 @@ shortinfo: php严格校验JSON数据格式的方法
             "price": {
                 "type": "number",   //price的类型为number
                 "minimum": 0,   //最小值为0
-                "exclusiveMinimum": true    //该字段为true时验证price>0, false时验证price>=0
+                "exclusiveMinimum": true    //该字段为true时验证price>0,false时验证price>=0
             },
             "tags": {
                 "type": "string",   //tags的类型为string
