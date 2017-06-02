@@ -25,7 +25,7 @@ public function test()
 ```
 
 上面这个场景应该应该大家都不会陌生，验证请求参数是一个非常基础的场景，当需要验证的参数较少时看上去也还能勉强接受，但如果接口接收的参数较多时就会变成这样😂
-![validator-middleware-2]({{ site.BASE_PATH }}/assets/images/validator-middleware-2.png){:data-action="zoom"}
+![validator-middleware-1]({{ site.BASE_PATH }}/assets/images/validator-middleware-1.png){:data-action="zoom"}
 （其实还有10+个参数的图，考虑到密集恐惧症患者的感受没有发🙂）好吧，没办法。谁让我们这个接口接收的参数多呢！怎么办，我也很无奈呀！
 
 **思考**：真的没有办法吗？我review了最近写的几个controller，发现了一个共同点：每一个接口请求对应的处理的方法中，第一段都是处理对应的参数验证的逻辑，这段逻辑除了对应接口的验证规则不一样，其他都是调用相同的逻辑。其实都是重复的代码！怎么样可以把这些代码优化一下呢？
