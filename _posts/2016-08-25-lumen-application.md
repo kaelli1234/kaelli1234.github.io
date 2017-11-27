@@ -12,7 +12,10 @@ shortinfo: Lumen框架在同一域名多应用环境下的部署问题
 官方文档的推荐一般是通过配置网站的根目录至```wwwroot/LUMEN/public/```。如果服务器上只有Lumen一个应用是没有问题的，但是如果服务器上同时部署了多个应用，想通过```wwwroot```的相对路径```http://DOMAIN/lumen/public/```来访问框架url时就会出现```NotFoundHttpException```的异常。
 
 根据错误提示，定位到文件
-```LUMEN/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php```中370行：
+```
+LUMEN/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php
+```
+中370行：
 
 ![lumen-application]({{ site.BASE_PATH }}/assets/images/lumen-application-1.jpg){:data-action="zoom"}
 
