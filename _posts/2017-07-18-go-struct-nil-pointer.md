@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Golang中的JSON处理技巧
-description: go, golang, struct, nil pointer,
+description: go, golang, struct, nil pointer
 categories: [Web]
 tags: [Golang]
 shortinfo: Golang中的JSON处理技巧

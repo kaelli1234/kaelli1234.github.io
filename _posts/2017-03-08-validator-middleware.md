@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Lumen中使用ValidatorMiddleware中间件处理请求参数验证
-description: php, lumen, validator,
+description: php, lumen, validator
 categories: [Web]
 tags: [PHP, Lumen]
 shortinfo: 通过引用ValidatorMiddleware中间件处理Request数据的验证
