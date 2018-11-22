@@ -6,11 +6,11 @@ $( document ).ready(function() {
 	/* Secondary contact links */
 	var scontacts = $('#contact-list-secondary');
 	var contact_list = $('#contact-list');
-	
+
 	scontacts.hide();
-	
+
 	contact_list.mouseenter(function(){ scontacts.fadeIn(); });
-	
+
 	contact_list.mouseleave(function(){ scontacts.fadeOut(); });
 
 
@@ -27,10 +27,5 @@ $( document ).ready(function() {
         $(this).parent().removeClass('focus');
         $('.info_content').removeClass('over')
         $('.info_content .desc').removeClass('curr');
-    }); 
-
-    $('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
     });
-
 });

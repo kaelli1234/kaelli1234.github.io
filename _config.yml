@@ -6,8 +6,8 @@ exclude: ["README.md"] # files to exclude
 # highlighter: rouge
 markdown: kramdown
 kramdown:
-  input:  GFM
-  syntax_highlighter: true
+  # input:  GFM
+  syntax_highlighter: rouge
 gems: ["jekyll-paginate", "jekyll-sitemap"]
 google_analytics: kael
 

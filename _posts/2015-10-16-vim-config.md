@@ -9,7 +9,7 @@ shortinfo: Linux下自用的vim配置文件
 ---
 
 ### .vimrc
-~~~
+~~~bash
 "-----------------------------------基本------------------------------------
 "处理未保存或只读文件时，弹出确认
 set confirm
@@ -90,7 +90,7 @@ set foldopen-=undo
 ~~~
 
 ### .vim/colors/molokai.vim
-~~~
+~~~bash
 " Vim color file
 "
 " Author: Tomas Restrepo <tomas@winterdom.com>

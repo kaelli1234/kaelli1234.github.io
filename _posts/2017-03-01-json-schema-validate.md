@@ -17,7 +17,7 @@ shortinfo: php严格校验JSON数据格式的方法
 
 主要说一下JSON Schema文件的定义问题，👇结合一个比较复杂的例子来说一下Schema各个参数的作用
 
-```JSON
+```json
 {
     "title": "Product set",
     "type": "array",    //原数据格式为数组

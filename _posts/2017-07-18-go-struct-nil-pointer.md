@@ -17,7 +17,7 @@ shortinfo: Golang中的JSON处理技巧
 这其实是一个比较常见的需求，当某个字段为空时，我们不希望该字段也输出在JSON字符串中，通过在结构体的tag中定义```omitempty```就可以达到该目的
 
 但是在实际的应用过程中，我却遇到了如下问题:
-```SQL
+```go
 type DataAttachment struct {
     Id     string                 `json:"id,omitempty"`
     Head   DataAttachmentHead     `json:"head,omitempty"`
@@ -40,7 +40,7 @@ type DataAttachmentBody struct {
 以上DataAttachment这个结构，通过对head，body定义omitempty选项，我们预期是希望如果当head，body为空时，可以不输出这2个字段到JSON中。但是事实上却和我们预期的有所差异，我们通过```json.Marshal```得到的JSON中还是会有空的head和body。
 
 所以我们要怎样才能实现我们的目的呢？其实很简单，**传指针**
-```SQL
+```go
 type DataAttachment struct {
     Id     string                 `json:"id,omitempty"`
     Head   *DataAttachmentHead     `json:"head,omitempty"`
