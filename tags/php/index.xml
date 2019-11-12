@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on Kael Li</title>
+    <link>http://www.lilinjian.com/tags/php/</link>
+    <description>Recent content in php on Kael Li</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 18 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.lilinjian.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHP7.2 AES加解密</title>
+      <link>http://www.lilinjian.com/posts/2018/01/18/php72-aes/</link>
+      <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2018/01/18/php72-aes/</guid>
+      <description> 由于Mcrypt库从PHP 7.1.0 开始废弃；自 PHP 7.2.0 起，会移到 PECL。
+ 所以之前使用PHP AES加解密的相关函数（mcrypt_encrypt、mcrypt_decrypt&amp;hellip;）在PHP7.1+中都已经废除了，新版PHP中通过OpenSSL库的相关方法来实现AES等加解密。
+ openssl_encrypt openssl_decrypt
+ 其实手册上的说明已经非常清楚了，但是函数声明中的options参数的说明让我很困惑，经过实践后整理结论如下
+    options value 说明     NULL 0 返回base64编码后的字符串   OPENSSL_RAW_DATA 1 返回原始字符串   OPENSSL_ZERO_PADDING 2 不填充字符串（默认使用PKCS#7填充字符串）     所以之前用mcrypt_encrypt方法加密得到的密文，在新版中只要用openssl_decrypt方法并且使用options=0来解密即可。
+参考
+ https://secure.php.net/manual/zh/function.openssl-encrypt.php#117208 https://secure.php.net/manual/zh/function.openssl-decrypt.php#119577  </description>
+    </item>
+    
+    <item>
+      <title>Lumen中使用ValidatorMiddleware中间件处理请求参数验证</title>
+      <link>http://www.lilinjian.com/posts/2017/03/08/validator-middleware/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2017/03/08/validator-middleware/</guid>
+      <description>本次文章的缘由来之下面这段代码
+public function test() { $message = [ &amp;#39;object_id.required&amp;#39; =&amp;gt; ErrorCode::PARAM_MISS, ]; $validator = Validator::make($this-&amp;gt;request-&amp;gt;all(), [ &amp;#39;object_id&amp;#39; =&amp;gt; &amp;#39;required&amp;#39;, ], $message); if ($validator-&amp;gt;fails()) { ...error } ... } 上面这个场景应该应该大家都不会陌生，验证请求参数是一个非常基础的场景，当需要验证的参数较少时看上去也还能勉强接受，但如果接口接收的参数较多时就会变成这样😂
+ （其实还有10+个参数的图，考虑到密集恐惧症患者的感受没有发🙂）好吧，没办法。谁让我们这个接口接收的参数多呢！怎么办，我也很无奈呀！
+思考：真的没有办法吗？我review了最近写的几个controller，发现了一个共同点：每一个接口请求对应的处理的方法中，第一段都是处理对应的参数验证的逻辑，这段逻辑除了对应接口的验证规则不一样，其他都是调用相同的逻辑。其实都是重复的代码！怎么样可以把这些代码优化一下呢？
+好，通过分析上面的问题，我的第一反应是引用中间件来统一处理这部分的逻辑。网上找了下相关的处理方式，并且参考了下Laravel FormRequest的实现，我设计了ValidatorMiddleware中间件来解决这个问题，代码如下。
+namespace App\Http\Middleware; use Closure; class ValidatorMiddleware { /** * Handle an incoming request. * * @param \Illuminate\Http\Request $request * @param \Closure $next * @return mixed */ public function handle($request, Closure $next) { list($controller, $method) = explode(&amp;#39;@&amp;#39;, $request-&amp;gt;route()[1][&amp;#39;uses&amp;#39;]); $class = str_replace(&amp;#39;Controller&amp;#39;, &amp;#39;Request&amp;#39;, $controller); if (class_exists($class)) { $messageRequest = new $class($request, $method); $messageRequest-&amp;gt;validate(); } return $next($request); } }/** Request处理基类 **/ namespace App\Http\Requests; use Illuminate\Http\Request; use App\Exceptions\ResponseException; use Validator; class BaseRequest { protected $input; protected $method; public function __construct(Request $request, String $method) { $this-&amp;gt;input = $request-&amp;gt;all(); $this-&amp;gt;method = $method; } public function rules() { return []; } public function messages() { return []; } public function validate() { $rules = array_get($this-&amp;gt;rules(), $this-&amp;gt;method, []); $messages = array_get($this-&amp;gt;messages(), $this-&amp;gt;method, []); $validator = Validator::make($this-&amp;gt;input, $rules, $messages); if ($validator-&amp;gt;fails()) { $err = $validator-&amp;gt;errors()-&amp;gt;all(); throw new ResponseException(head($err)); } return true; } } 下面结合实际的例子来讲解:</description>
+    </item>
+    
+    <item>
+      <title>php通过定义JSON Schema来校验对应JSON的格式数据</title>
+      <link>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</link>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</guid>
+      <description>最近项目中遇到的需求，对于某JSON类型的字段，要做验证的格式校验，并且标出错误的地方。
+本着不要重复造轮子的原则，在github上找到了这个项目
+ 通过定义固定格式的JSON Schema来验证对应格式的数据。
+https://github.com/justinrainbow/json-schema
+ 具体的使用方法就不多说啦，通过composer安装，参照示例就好。
+主要说一下JSON Schema文件的定义问题，👇结合一个比较复杂的例子来说一下Schema各个参数的作用
+{ &amp;#34;title&amp;#34;: &amp;#34;Product set&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;array&amp;#34;, //原数据格式为数组 &amp;#34;minItems&amp;#34;: 1, //最少1个元素 &amp;#34;maxItems&amp;#34;: 10, //最多10个元素 &amp;#34;uniqueItems&amp;#34;: true, //数据重复判断 &amp;#34;items&amp;#34;: { &amp;#34;title&amp;#34;: &amp;#34;Product&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;object&amp;#34;, //数组元素的值为对象 &amp;#34;properties&amp;#34;: { &amp;#34;id&amp;#34;: { &amp;#34;description&amp;#34;: &amp;#34;The unique identifier for a product&amp;#34;, //id字段描述 &amp;#34;type&amp;#34;: &amp;#34;string&amp;#34;, //id的类型为string &amp;#34;pattern&amp;#34;: &amp;#34;^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$&amp;#34; //验证id是否符合该正则表达式的规则 }, &amp;#34;name&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;string&amp;#34;, //name的类型为string &amp;#34;maxLength&amp;#34;: 10 //最大长度为10 }, &amp;#34;url&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;string&amp;#34;, //url的类型为string &amp;#34;format&amp;#34;: &amp;#34;uri&amp;#34; //并且符合URI规则 }, &amp;#34;price&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;number&amp;#34;, //price的类型为number &amp;#34;minimum&amp;#34;: 0, //最小值为0 &amp;#34;exclusiveMinimum&amp;#34;: true //该字段为true时验证price&amp;gt;0,false时验证price&amp;gt;=0 }, &amp;#34;tags&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;string&amp;#34;, //tags的类型为string &amp;#34;enum&amp;#34;: [ //并且值为enum中之一 &amp;#34;food&amp;#34;, &amp;#34;fruit&amp;#34;, &amp;#34;juice&amp;#34; ] } }, &amp;#34;additionalProperties&amp;#34;: false, //不允许除了items.</description>
+    </item>
+    
+    <item>
+      <title>基于Lumen框架构建基础的Web API服务</title>
+      <link>http://www.lilinjian.com/posts/2017/02/10/imooc-lumen-api/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2017/02/10/imooc-lumen-api/</guid>
+      <description>巧合下跟慕课网有过合作，虽然后来因为个人工作时间的关系没有深入进行下去，但是也算借着这个机会锻炼一下自己，梳理了下自己所掌握的知识，在这里跟大家做个分享，欢迎大家指教。</description>
+    </item>
+    
+    <item>
+      <title>PHP最佳实践，规范，相关资源整理</title>
+      <link>http://www.lilinjian.com/posts/2017/01/03/php-doc/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2017/01/03/php-doc/</guid>
+      <description>标记整理下书签
+ PHP
+ PHP 手册 PHP The Right Way PHP-FIG PSR中文版  Laravel
+ Laravel China Laravel 的中大型專案架構 胖胖Model減重的五個方法  Tools &amp;amp;&amp;amp; Docs
+ 对 REST 的理解 Mastering Markdown Awesome Mac APIDOC 简明 VIM 练级攻略   持续更新</description>
+    </item>
+    
+    <item>
+      <title>Lumen框架在同一域名多应用环境下的部署问题</title>
+      <link>http://www.lilinjian.com/posts/2016/08/25/lumen-application/</link>
+      <pubDate>Thu, 25 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2016/08/25/lumen-application/</guid>
+      <description> 在同一域名下部署多个应用时，使用Lumen框架遇到的问题 官方文档的推荐一般是通过配置网站的根目录至wwwroot/LUMEN/public/。如果服务器上只有Lumen一个应用是没有问题的，但是如果服务器上同时部署了多个应用，想通过wwwroot的相对路径http://DOMAIN/lumen/public/来访问框架url时就会出现NotFoundHttpException的异常。
+根据错误提示，定位到文件LUMEN/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php中370行：
+框架中的LUMEN/public/index.php默认是$app-&amp;gt;run();是不传$request的，对应调用的方法如下：
+可见通过此方法获取的path，如果存在多应用的情况下，$this-&amp;gt;routes获取是错误的。
+解决方法如下： 修改LUMEN/public/index.php为
+$request = Illuminate\Http\Request::capture(); $app-&amp;gt;run($request); 参考
+ https://segmentfault.com/a/1190000002724037 https://segmentfault.com/a/1190000004460637 http://stackoverflow.com/questions/29728973/notfoundhttpexception-with-lumen  </description>
+    </item>
+    
+    <item>
+      <title>PHP使用CURL访问HTTPS</title>
+      <link>http://www.lilinjian.com/posts/2016/08/08/php-curl-https/</link>
+      <pubDate>Mon, 08 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2016/08/08/php-curl-https/</guid>
+      <description>最近新上线的项目准备升级服务支持https访问，记录下使用curl方法访问https时遇到的问题。
+直接上代码:
+function post($url, $param) { $ssl = substr($url, 0, 8) == &amp;#34;https://&amp;#34; ? true : false; $ch = curl_init(); curl_setopt($ch, CURLOPT_URL, $url); if ($ssl) { curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 信任任何证书 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // 检查证书中是否设置域名 // $cacert = getcwd() . &amp;#39;/cacert.pem&amp;#39;; //CA根证书 // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true); // 只信任CA颁布的证书 // curl_setopt($ch, CURLOPT_CAINFO, $cacert); // CA根证书（用来验证的网站证书是否是CA颁布） // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2); // 检查证书中是否设置域名，并且是否与提供的主机名匹配 } curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); curl_setopt($ch, CURLOPT_POST, true); curl_setopt($ch, CURLOPT_POSTFIELDS, $param); $return = curl_exec($ch); curl_close($ch); return $return; } 简单来说访问https时，只要指定CURLOPT_SSL_VERIFYPEER和CURLOPT_SSL_VERIFYHOST为false就能支持访问了。当然也可以下载对应的根证书，然后在请求中带上访问也可以。</description>
+    </item>
+    
+    <item>
+      <title>Lumen / Laravel .env</title>
+      <link>http://www.lilinjian.com/posts/2016/07/20/lumen-env/</link>
+      <pubDate>Wed, 20 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2016/07/20/lumen-env/</guid>
+      <description> 最近在使用Lumen框架部署上线时遇到的一个问题 Lumen / Laravel 中的.env文件里一般配置着各种环境所对应的配置，例如：db，cache等配置，官方的推荐是版本库中保留一个.env.example，各个环境cp .env.example的配置并配上对应环境的配置生成.env文件，完成项目的部署。
+但实际应用中会遇到一个比较尴尬的问题是：如果新增或修改了配置，需要手动到对应环境上去改配置，一般的测试或者开发环境还好，但是对应线上生产或者预发布环境，一般是不允许手动修改文件的。而且也有可能线上的机器较多，手动一个个去操作不方便也不安全。而且像现在一般也都是使用自动化上线工具，拉版本库代码直接上线，此时官方推荐的做法就不是很适用了。
+既然满足不了自己的需求，那就稍微改造一下吧。 初步的思路是: 把各个环境的配置文件都放到版本库里，然后代码里判断出各个环境，加载对应的环境配置。
+首先我们来看看lumen是如何运行的，通过分析lumen的入口文件LUMEN/public/idnex.php，我们看到它引用了 LUMEN/bootstrap/app.php 这个文件。 然后在LUMEN/bootstrap/app.php中，完成了Dotenv类的初始化 通过查看Dotenv类的源码，我们可以知道构造函数的俩个参数的含义
+ .env文件所在的目录 文件名  了解了如上的信息后，我们就可以开始自己的改动啦。 首先在版本库里新建
+ .env.local .env.test .env.production  通过获得服务器的hostname来得到对应的环境，然后load对应的.env文件就好了。
+参考
+ http://developers.ph/laravel-framework/laravel-5/how-to-setup-multiple-environment-for-laravel-5-developers-way  </description>
+    </item>
+    
+    <item>
+      <title>Lumen CORS</title>
+      <link>http://www.lilinjian.com/posts/2016/06/30/lumen-cors/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2016/06/30/lumen-cors/</guid>
+      <description>使用Lumen框架如何解决跨域问题 跨域问题想必是每个从事web相关开发的同学经常遇到的问题，特别是现在越来越多的应用采用的前后端分离的开发模式，所以解决跨域问题成了大家必不可少的一项技能。最近在使用Lumen框架开发时也遇到了这个问题。
+进入主题之前我们先来个铺垫，首先我们来了解一下什么是跨域，以及一些解决方案 这是铺垫
+有兴趣的同学可以仔细看看，其实W3C标准的解决方案是只要在服务器response的头部带上Access-Control-Allow-Origin：DOMAIN(允许跨域访问的域名，*代表所有)，不过需要一提的是该方案只支持IE8及以上，以及一些现代浏览器(Fire Fox,Chrome,etc.)。解决跨域比较常见的还有使用jsonp，但这不是本文重点，这里就不具体展开了。
+好了，上面啰嗦了那么多，下面进入主题，那么在Lumen框架中，我们怎么解决跨域问题呢? 这边主要参考了这里该大神的方案。 通过运用框架的Middleware和ServiceProvider来解决跨域问题。
+新增中间件，LUMEN/app/Http/Middleware/CorsMiddleware.php
+namespace App\Http\Middleware; use Closure; class CorsMiddleware { /** * Handle an incoming request. * * @param \Illuminate\Http\Request $request * @param \Closure $next * @return mixed */ public function handle($request, Closure $next) { $response = $next($request); $response-&amp;gt;header(&amp;#39;Access-Control-Allow-Methods&amp;#39;, &amp;#39;HEAD, GET, POST, PUT, PATCH, DELETE&amp;#39;); $response-&amp;gt;header(&amp;#39;Access-Control-Allow-Headers&amp;#39;, $request-&amp;gt;header(&amp;#39;Access-Control-Request-Headers&amp;#39;)); $response-&amp;gt;header(&amp;#39;Access-Control-Allow-Origin&amp;#39;, &amp;#39;*&amp;#39;); return $response; } } 定义ServiceProvider，LUMEN/app/Providers/CatchAllOptionsRequestsProvider.php
+namespace App\Providers; use Illuminate\Support\ServiceProvider; /** * If the incoming request is an OPTIONS request * we will register a handler for the requested route */ class CatchAllOptionsRequestsProvider extends ServiceProvider { public function register() { $request = app(&amp;#39;request&amp;#39;); if ($request-&amp;gt;isMethod(&amp;#39;OPTIONS&amp;#39;)) { app()-&amp;gt;options($request-&amp;gt;path(), function() { return response(&amp;#39;&amp;#39;, 200)-&amp;gt;header(&amp;#39;Access-Control-Allow-Origin&amp;#39;, &amp;#39;*&amp;#39;); }); } } } 在LUMEN/bootstrap/app.</description>
+    </item>
+    
+    <item>
+      <title>php5.6 curl 上传文件失败</title>
+      <link>http://www.lilinjian.com/posts/2016/04/05/php-curlfile/</link>
+      <pubDate>Tue, 05 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2016/04/05/php-curlfile/</guid>
+      <description>php5.6 CURLFile 新项目中要完成一个上传文件的接口，要写个自测接口时遇到的坑。。。
+之前php5.4版本时curl中直接通过@符号+文件路径，则curl自动会把文件解析上传，后端通过$_FILES变量拿到，但在写自测脚本时死活没反应。。。纠结了半天才在 stackoverflow 找到答案。
+原来新版php中CURLOPT_SAFE_UPLOAD参数默认已经是true了，所以不支持@这样（不安全）的写法，而是通过CURLFile类来完成模拟文件上传。代码如下:
+if ((version_compare(PHP_VERSION, &amp;#39;5.5&amp;#39;) &amp;gt;= 0)) { $aPost[&amp;#39;file&amp;#39;] = new CURLFile($localFile); curl_setopt($ch, CURLOPT_SAFE_UPLOAD, true); } else { $aPost[&amp;#39;file&amp;#39;] = &amp;#34;@&amp;#34;.$localFile; } $ch = curl_init(); curl_setopt($ch, CURLOPT_URL, $apiurl); curl_setopt($ch, CURLOPT_TIMEOUT, 120); curl_setopt($ch, CURLOPT_BUFFERSIZE, 128); curl_setopt($ch, CURLOPT_POSTFIELDS, $aPost); curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); $sResponse = curl_exec ($ch); 当然了，如果不想使用CURLFile方法也是可以的，手动设置CURLOPT_SAFE_UPLOAD为false后，@+文件又能支持了（一般php版本升级兼容处理采用此方式改动成本较小）</description>
+    </item>
+    
+  </channel>
+</rss>

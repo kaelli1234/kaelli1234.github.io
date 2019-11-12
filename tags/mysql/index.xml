@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on Kael Li</title>
+    <link>http://www.lilinjian.com/tags/mysql/</link>
+    <description>Recent content in mysql on Kael Li</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 08 Nov 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.lilinjian.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL查询优化之延迟关联</title>
+      <link>http://www.lilinjian.com/posts/2018/11/08/go-mgo/</link>
+      <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2018/11/08/go-mgo/</guid>
+      <description>最近项目上遇到了由于一个分页查询的业务导致请求超时，页面无法正常显示的情况。分析解决问题后，记录下备忘。
+ 简单描述下业务，是一张用来记录用户操作行为的表，数据量大概在1500W左右。前端用户通过选择类型，时间等筛选，得到分页结果。
+ 表结构如下
+| t_operate_6 | CREATE TABLE `t_operate_6` ( `Fid` int(11) unsigned NOT NULL AUTO_INCREMENT, `Fcid` bigint(20) unsigned NOT NULL, `Fuid` bigint(20) unsigned NOT NULL, `Fname` varchar(32) DEFAULT NULL, `FroleName` varchar(64) NOT NULL, `Faction` int(2) NOT NULL, `FobjectId` varchar(64) DEFAULT NULL, `FobjectName` varchar(64) DEFAULT NULL, `Fip` varchar(64) DEFAULT NULL, `Fdevtype` int(2) NOT NULL DEFAULT &#39;0&#39;, `Fctime` int(11) unsigned NOT NULL, PRIMARY KEY (`Fid`), KEY `Fcid` (`Fcid`), KEY `Fuid` (`Fuid`), KEY `Fctime` (`Fctime`), ) ENGINE=InnoDB AUTO_INCREMENT=14491762 DEFAULT CHARSET=utf8 |   业务其实并不复杂，原来的实现逻辑基本基于以下俩条SQL语句。（以下数据基于本地测试库，添加了SQL_NO_CACHE条件避免查询语句被缓存）</description>
+    </item>
+    
+    <item>
+      <title>一道有关MySQL查询语句的面试题</title>
+      <link>http://www.lilinjian.com/posts/2016/10/10/mysql-query/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2016/10/10/mysql-query/</guid>
+      <description>最近闲来无事，突然想起来之前在群里看到的一个有关MySQL查询语句的面试题，跟大家分享，顺便留作备忘。
+原始数据如下：
+    id data name date     1 30 kael 20160718   2 30 soul 20160720   3 66 kael 20160719   4 52 soul 20160719   5 99 kael 20160720   6 82 soul 20160718     希望通过SQL语句得到如下结果：
+    name Data_18 Data_19 Data_20     kael 30 66 99   soul 82 52 30     太久没写原生查询语句，暂时想到的SQL语句如下：</description>
+    </item>
+    
+  </channel>
+</rss>

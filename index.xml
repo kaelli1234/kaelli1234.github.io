@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kael Li</title>
-    <link>https://kaelli1234.github.io/</link>
+    <link>http://www.lilinjian.com/</link>
     <description>Recent content on Kael Li</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Thu, 08 Nov 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kaelli1234.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.lilinjian.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MySQL查询优化之延迟关联</title>
-      <link>https://kaelli1234.github.io/posts/2018/11/08/go-mgo/</link>
+      <link>http://www.lilinjian.com/posts/2018/11/08/go-mgo/</link>
       <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2018/11/08/go-mgo/</guid>
+      <guid>http://www.lilinjian.com/posts/2018/11/08/go-mgo/</guid>
       <description>最近项目上遇到了由于一个分页查询的业务导致请求超时，页面无法正常显示的情况。分析解决问题后，记录下备忘。
  简单描述下业务，是一张用来记录用户操作行为的表，数据量大概在1500W左右。前端用户通过选择类型，时间等筛选，得到分页结果。
  表结构如下
@@ -25,10 +25,10 @@
     
     <item>
       <title>Golang 执行系统外部命令</title>
-      <link>https://kaelli1234.github.io/posts/2018/09/29/go-exec/</link>
+      <link>http://www.lilinjian.com/posts/2018/09/29/go-exec/</link>
       <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2018/09/29/go-exec/</guid>
+      <guid>http://www.lilinjian.com/posts/2018/09/29/go-exec/</guid>
       <description>最近在做php服务迁移，遇到了需要调用系统外部命令(ffmpeg)，处理视频预览图的情况，以前php是直接找了轮子(php-ffmpeg)解决的，但本质其实也就是调用了相关函数执行系统外部的命令。golang也有os/exec这个包支持，标注一下备忘。
 1、其实主要是以下几个方法
 func Command(name string, arg ...string) *Cmd func (c *Cmd) Output() ([]byte, error) func (c *Cmd) CombinedOutput() ([]byte, error) 通过调用exec.Command()执行系统外部命令，通过*Cmd.Output()或者*Cmd.CombinedOutput()获取执行结果输出。 需要注意的是exec.Command()这个方法的传参。
@@ -40,10 +40,10 @@ package main import ( &amp;#34;fmt&amp;#34; &amp;#34;os/exec&amp;#34; &amp;#34;s
     
     <item>
       <title>Golang mgo 使用心得</title>
-      <link>https://kaelli1234.github.io/posts/2018/06/29/go-mgo/</link>
+      <link>http://www.lilinjian.com/posts/2018/06/29/go-mgo/</link>
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2018/06/29/go-mgo/</guid>
+      <guid>http://www.lilinjian.com/posts/2018/06/29/go-mgo/</guid>
       <description>最近在使用mgo的过程中遇到了一些问题，总结标记一下。
 1、关于mgo的连接池问题。相关的几个方法如下
 Dial(url string) (*Session, error) func (*Session) Clone() *Session func (*Session) Copy() *Session 用以上三个方法得到的Session，使用完后需要Close()，如果不close的话，连接池中的session会一直增加，直到默认配置的4096。之后获取session的协程会sleep等待，直到有可用的session。业务端的表现就是程序挂死，类似死锁的表现😂。所以session用完后一定要defer close掉。
@@ -53,10 +53,10 @@ package main import ( &amp;#34;fmt&amp;#34; &amp;#34;gopkg.in/mgo.v2&amp;#34; ) 
     
     <item>
       <title>PHP7.2 AES加解密</title>
-      <link>https://kaelli1234.github.io/posts/2018/01/18/php72-aes/</link>
+      <link>http://www.lilinjian.com/posts/2018/01/18/php72-aes/</link>
       <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2018/01/18/php72-aes/</guid>
+      <guid>http://www.lilinjian.com/posts/2018/01/18/php72-aes/</guid>
       <description> 由于Mcrypt库从PHP 7.1.0 开始废弃；自 PHP 7.2.0 起，会移到 PECL。
  所以之前使用PHP AES加解密的相关函数（mcrypt_encrypt、mcrypt_decrypt&amp;hellip;）在PHP7.1+中都已经废除了，新版PHP中通过OpenSSL库的相关方法来实现AES等加解密。
  openssl_encrypt openssl_decrypt
@@ -68,10 +68,10 @@ package main import ( &amp;#34;fmt&amp;#34; &amp;#34;gopkg.in/mgo.v2&amp;#34; ) 
     
     <item>
       <title>Golang中的JSON处理技巧</title>
-      <link>https://kaelli1234.github.io/posts/2017/07/18/go-struct-nil-pointer/</link>
+      <link>http://www.lilinjian.com/posts/2017/07/18/go-struct-nil-pointer/</link>
       <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2017/07/18/go-struct-nil-pointer/</guid>
+      <guid>http://www.lilinjian.com/posts/2017/07/18/go-struct-nil-pointer/</guid>
       <description>又好久没有更新博客了，最近因为项目需要学习了下Go语言，才真正明白了为什么说PHP是世界上最好的语言🤣。言归正传，首先先推荐本秘籍 build-web-application-with-golang Github上的高星项目，作者同时也是beego框架的开发者，本项目是作者使用Go进行Web开发的经验总结，满满的干货。
 所以基础的JSON处理就直接参考文档吧，主要内容大概是Go中有专门的JSON包来处理JSON数据，通过定义对应的struct，tag映射字段，很方便的可以把JSON数据转成struct，或者把struct转化成JSON字符串。
 其中文档中有段描述是这样的：
@@ -84,10 +84,10 @@ type DataAttachment struct { Id string `json:&amp;#34;id,omitempty&amp;#34;` Hea
     
     <item>
       <title>Lumen中使用ValidatorMiddleware中间件处理请求参数验证</title>
-      <link>https://kaelli1234.github.io/posts/2017/03/08/validator-middleware/</link>
+      <link>http://www.lilinjian.com/posts/2017/03/08/validator-middleware/</link>
       <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2017/03/08/validator-middleware/</guid>
+      <guid>http://www.lilinjian.com/posts/2017/03/08/validator-middleware/</guid>
       <description>本次文章的缘由来之下面这段代码
 public function test() { $message = [ &amp;#39;object_id.required&amp;#39; =&amp;gt; ErrorCode::PARAM_MISS, ]; $validator = Validator::make($this-&amp;gt;request-&amp;gt;all(), [ &amp;#39;object_id&amp;#39; =&amp;gt; &amp;#39;required&amp;#39;, ], $message); if ($validator-&amp;gt;fails()) { ...error } ... } 上面这个场景应该应该大家都不会陌生，验证请求参数是一个非常基础的场景，当需要验证的参数较少时看上去也还能勉强接受，但如果接口接收的参数较多时就会变成这样😂
  （其实还有10+个参数的图，考虑到密集恐惧症患者的感受没有发🙂）好吧，没办法。谁让我们这个接口接收的参数多呢！怎么办，我也很无奈呀！
@@ -98,10 +98,10 @@ namespace App\Http\Middleware; use Closure; class ValidatorMiddleware { /** * Ha
     
     <item>
       <title>php通过定义JSON Schema来校验对应JSON的格式数据</title>
-      <link>https://kaelli1234.github.io/posts/2017/03/01/json-schema-validate/</link>
+      <link>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</link>
       <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2017/03/01/json-schema-validate/</guid>
+      <guid>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</guid>
       <description>最近项目中遇到的需求，对于某JSON类型的字段，要做验证的格式校验，并且标出错误的地方。
 本着不要重复造轮子的原则，在github上找到了这个项目
  通过定义固定格式的JSON Schema来验证对应格式的数据。
@@ -113,19 +113,19 @@ https://github.com/justinrainbow/json-schema
     
     <item>
       <title>基于Lumen框架构建基础的Web API服务</title>
-      <link>https://kaelli1234.github.io/posts/2017/02/10/imooc-lumen-api/</link>
+      <link>http://www.lilinjian.com/posts/2017/02/10/imooc-lumen-api/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2017/02/10/imooc-lumen-api/</guid>
+      <guid>http://www.lilinjian.com/posts/2017/02/10/imooc-lumen-api/</guid>
       <description>巧合下跟慕课网有过合作，虽然后来因为个人工作时间的关系没有深入进行下去，但是也算借着这个机会锻炼一下自己，梳理了下自己所掌握的知识，在这里跟大家做个分享，欢迎大家指教。</description>
     </item>
     
     <item>
       <title>PHP最佳实践，规范，相关资源整理</title>
-      <link>https://kaelli1234.github.io/posts/2017/01/03/php-doc/</link>
+      <link>http://www.lilinjian.com/posts/2017/01/03/php-doc/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2017/01/03/php-doc/</guid>
+      <guid>http://www.lilinjian.com/posts/2017/01/03/php-doc/</guid>
       <description>标记整理下书签
  PHP
  PHP 手册 PHP The Right Way PHP-FIG PSR中文版  Laravel
@@ -135,10 +135,10 @@ https://github.com/justinrainbow/json-schema
     
     <item>
       <title>一道有关MySQL查询语句的面试题</title>
-      <link>https://kaelli1234.github.io/posts/2016/10/10/mysql-query/</link>
+      <link>http://www.lilinjian.com/posts/2016/10/10/mysql-query/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://kaelli1234.github.io/posts/2016/10/10/mysql-query/</guid>
+      <guid>http://www.lilinjian.com/posts/2016/10/10/mysql-query/</guid>
       <description>最近闲来无事，突然想起来之前在群里看到的一个有关MySQL查询语句的面试题，跟大家分享，顺便留作备忘。
 原始数据如下：
     id data name date     1 30 kael 20160718   2 30 soul 20160720   3 66 kael 20160719   4 52 soul 20160719   5 99 kael 20160720   6 82 soul 20160718     希望通过SQL语句得到如下结果：

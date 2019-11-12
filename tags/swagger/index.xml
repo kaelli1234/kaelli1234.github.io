@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>swagger on Kael Li</title>
+    <link>http://www.lilinjian.com/tags/swagger/</link>
+    <description>Recent content in swagger on Kael Li</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 25 Dec 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.lilinjian.com/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Swagger初探</title>
+      <link>http://www.lilinjian.com/posts/2015/12/25/swagger/</link>
+      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2015/12/25/swagger/</guid>
+      <description>缘由 最近项目要加新功能，回头看了下之前定义的接口文档，简直不忍直视。有用txt的、有用word的，各种格式不规范，写法也不一样，看起来很头疼。不够直观，并且也很难维护。想起之前同事分享过的Swagger，趁着最近不忙，就决定着手把之前的API文档整理到Swagger中去。
+Swagger是什么  官方的介绍是 A POWERFUL INTERFACE TO YOUR API。
+ 通过Swagger提供的相关tools可以很直观的在网页上浏览你的API、测试API、甚至通过解析Swagger definitions（一个YAML or JSON格式的文档），直接自动生成相关代码（swagger-codegen）。个人理解Swagger的核心就是Swagger definitions，相关工具可以（Swagger Core、Swagger Editor）生成Swagger definitions，（Swagger UI、Swagger Editor）解析Swagger definitions生成UI界面。
+为什么要用Swagger 工具从来都是为了提高效率而产生的，想想从前光写个API文档都要花好些时间，而且其中还会出现理解上的偏差，需要前后端反复沟通确认，不仅浪费了时间还没有什么效率。通过使用Swagger，我们既可以用它来作为API的文档，也可以用来测试API，前端 or 客户端的同学通过对各个API的点击可以实时的看到返回结果，节约了大量的沟通时间，极大的提高了开发效率。
+怎么用 Swagger Api 提供了如下工具来为我们服务:
+ Swagger Core [Java-related libraries for generating and reading Swagger definitions] 一个JAVA Lib，用来生成和解析Swagger definitions，没用过。。
+ Swagger Codegen [Command-line tool for generating both client and server side code from a Swagger definition] 据说可以通过它解析Swagger definitions生成对应的后端API实现代码，没用过。。
+ Swagger UI [Browser based UI for exploring a Swagger defined API] 通过解析定义好的Swagger definitions构建对应的API UI界面。 GitHub - Swagger UI。 GitHub里的说明基本都已经很详细了，这里就不多做介绍了。基本上只要你预先装好npm(node)和gulp，直接照着步骤就没什么问题。对应的demo - petstore.</description>
+    </item>
+    
+  </channel>
+</rss>

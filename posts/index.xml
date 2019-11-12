@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on Kael Li</title>
-        <link>https://kaelli1234.github.io/posts/</link>
+        <link>http://www.lilinjian.com/posts/</link>
         <description>Recent content in Posts on Kael Li</description>
         <generator>Hugo -- gohugo.io</generator>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
         <lastBuildDate>Thu, 08 Nov 2018 00:00:00 +0000</lastBuildDate>
-        <atom:link href="https://kaelli1234.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://www.lilinjian.com/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>MySQL查询优化之延迟关联</title>
-            <link>https://kaelli1234.github.io/posts/2018/11/08/go-mgo/</link>
+            <link>http://www.lilinjian.com/posts/2018/11/08/go-mgo/</link>
             <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2018/11/08/go-mgo/</guid>
+            <guid>http://www.lilinjian.com/posts/2018/11/08/go-mgo/</guid>
             <description>最近项目上遇到了由于一个分页查询的业务导致请求超时，页面无法正常显示的情况。分析解决问题后，记录下备忘。
  简单描述下业务，是一张用来记录用户操作行为的表，数据量大概在1500W左右。前端用户通过选择类型，时间等筛选，得到分页结果。
  表结构如下
@@ -175,10 +175,10 @@ mysql&gt; EXPLAIN SELECT SQL_NO_CACHE a.* FROM t_operate_0 a, (SELECT Fid FROM t
         
         <item>
             <title>Golang 执行系统外部命令</title>
-            <link>https://kaelli1234.github.io/posts/2018/09/29/go-exec/</link>
+            <link>http://www.lilinjian.com/posts/2018/09/29/go-exec/</link>
             <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2018/09/29/go-exec/</guid>
+            <guid>http://www.lilinjian.com/posts/2018/09/29/go-exec/</guid>
             <description>最近在做php服务迁移，遇到了需要调用系统外部命令(ffmpeg)，处理视频预览图的情况，以前php是直接找了轮子(php-ffmpeg)解决的，但本质其实也就是调用了相关函数执行系统外部的命令。golang也有os/exec这个包支持，标注一下备忘。
 1、其实主要是以下几个方法
 func Command(name string, arg ...string) *Cmd func (c *Cmd) Output() ([]byte, error) func (c *Cmd) CombinedOutput() ([]byte, error) 通过调用exec.Command()执行系统外部命令，通过*Cmd.Output()或者*Cmd.CombinedOutput()获取执行结果输出。 需要注意的是exec.Command()这个方法的传参。
@@ -226,10 +226,10 @@ package main import ( &amp;#34;fmt&amp;#34; &amp;#34;os/exec&amp;#34; &amp;#34;s
         
         <item>
             <title>Golang mgo 使用心得</title>
-            <link>https://kaelli1234.github.io/posts/2018/06/29/go-mgo/</link>
+            <link>http://www.lilinjian.com/posts/2018/06/29/go-mgo/</link>
             <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2018/06/29/go-mgo/</guid>
+            <guid>http://www.lilinjian.com/posts/2018/06/29/go-mgo/</guid>
             <description>最近在使用mgo的过程中遇到了一些问题，总结标记一下。
 1、关于mgo的连接池问题。相关的几个方法如下
 Dial(url string) (*Session, error) func (*Session) Clone() *Session func (*Session) Copy() *Session 用以上三个方法得到的Session，使用完后需要Close()，如果不close的话，连接池中的session会一直增加，直到默认配置的4096。之后获取session的协程会sleep等待，直到有可用的session。业务端的表现就是程序挂死，类似死锁的表现😂。所以session用完后一定要defer close掉。
@@ -299,10 +299,10 @@ package main import ( &amp;#34;fmt&amp;#34; &amp;#34;gopkg.in/mgo.v2&amp;#34; ) 
         
         <item>
             <title>PHP7.2 AES加解密</title>
-            <link>https://kaelli1234.github.io/posts/2018/01/18/php72-aes/</link>
+            <link>http://www.lilinjian.com/posts/2018/01/18/php72-aes/</link>
             <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2018/01/18/php72-aes/</guid>
+            <guid>http://www.lilinjian.com/posts/2018/01/18/php72-aes/</guid>
             <description> 由于Mcrypt库从PHP 7.1.0 开始废弃；自 PHP 7.2.0 起，会移到 PECL。
  所以之前使用PHP AES加解密的相关函数（mcrypt_encrypt、mcrypt_decrypt&amp;hellip;）在PHP7.1+中都已经废除了，新版PHP中通过OpenSSL库的相关方法来实现AES等加解密。
  openssl_encrypt openssl_decrypt
@@ -370,10 +370,10 @@ package main import ( &amp;#34;fmt&amp;#34; &amp;#34;gopkg.in/mgo.v2&amp;#34; ) 
         
         <item>
             <title>Golang中的JSON处理技巧</title>
-            <link>https://kaelli1234.github.io/posts/2017/07/18/go-struct-nil-pointer/</link>
+            <link>http://www.lilinjian.com/posts/2017/07/18/go-struct-nil-pointer/</link>
             <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2017/07/18/go-struct-nil-pointer/</guid>
+            <guid>http://www.lilinjian.com/posts/2017/07/18/go-struct-nil-pointer/</guid>
             <description>又好久没有更新博客了，最近因为项目需要学习了下Go语言，才真正明白了为什么说PHP是世界上最好的语言🤣。言归正传，首先先推荐本秘籍 build-web-application-with-golang Github上的高星项目，作者同时也是beego框架的开发者，本项目是作者使用Go进行Web开发的经验总结，满满的干货。
 所以基础的JSON处理就直接参考文档吧，主要内容大概是Go中有专门的JSON包来处理JSON数据，通过定义对应的struct，tag映射字段，很方便的可以把JSON数据转成struct，或者把struct转化成JSON字符串。
 其中文档中有段描述是这样的：
@@ -431,10 +431,10 @@ type DataAttachment struct { Id string `json:&amp;#34;id,omitempty&amp;#34;` Hea
         
         <item>
             <title>Lumen中使用ValidatorMiddleware中间件处理请求参数验证</title>
-            <link>https://kaelli1234.github.io/posts/2017/03/08/validator-middleware/</link>
+            <link>http://www.lilinjian.com/posts/2017/03/08/validator-middleware/</link>
             <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2017/03/08/validator-middleware/</guid>
+            <guid>http://www.lilinjian.com/posts/2017/03/08/validator-middleware/</guid>
             <description>本次文章的缘由来之下面这段代码
 public function test() { $message = [ &amp;#39;object_id.required&amp;#39; =&amp;gt; ErrorCode::PARAM_MISS, ]; $validator = Validator::make($this-&amp;gt;request-&amp;gt;all(), [ &amp;#39;object_id&amp;#39; =&amp;gt; &amp;#39;required&amp;#39;, ], $message); if ($validator-&amp;gt;fails()) { ...error } ... } 上面这个场景应该应该大家都不会陌生，验证请求参数是一个非常基础的场景，当需要验证的参数较少时看上去也还能勉强接受，但如果接口接收的参数较多时就会变成这样😂
  （其实还有10+个参数的图，考虑到密集恐惧症患者的感受没有发🙂）好吧，没办法。谁让我们这个接口接收的参数多呢！怎么办，我也很无奈呀！
@@ -585,10 +585,10 @@ class UserRequest extends BaseRequest
         
         <item>
             <title>php通过定义JSON Schema来校验对应JSON的格式数据</title>
-            <link>https://kaelli1234.github.io/posts/2017/03/01/json-schema-validate/</link>
+            <link>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</link>
             <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2017/03/01/json-schema-validate/</guid>
+            <guid>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</guid>
             <description>最近项目中遇到的需求，对于某JSON类型的字段，要做验证的格式校验，并且标出错误的地方。
 本着不要重复造轮子的原则，在github上找到了这个项目
  通过定义固定格式的JSON Schema来验证对应格式的数据。
@@ -664,10 +664,10 @@ https://github.com/justinrainbow/json-schema
         
         <item>
             <title>基于Lumen框架构建基础的Web API服务</title>
-            <link>https://kaelli1234.github.io/posts/2017/02/10/imooc-lumen-api/</link>
+            <link>http://www.lilinjian.com/posts/2017/02/10/imooc-lumen-api/</link>
             <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2017/02/10/imooc-lumen-api/</guid>
+            <guid>http://www.lilinjian.com/posts/2017/02/10/imooc-lumen-api/</guid>
             <description>巧合下跟慕课网有过合作，虽然后来因为个人工作时间的关系没有深入进行下去，但是也算借着这个机会锻炼一下自己，梳理了下自己所掌握的知识，在这里跟大家做个分享，欢迎大家指教。</description>
             <content type="html"><![CDATA[<p>巧合下跟慕课网有过合作，虽然后来因为个人工作时间的关系没有深入进行下去，但是也算借着这个机会锻炼一下自己，梳理了下自己所掌握的知识，在这里跟大家做个分享，欢迎大家指教。</p>
 
@@ -677,10 +677,10 @@ https://github.com/justinrainbow/json-schema
         
         <item>
             <title>PHP最佳实践，规范，相关资源整理</title>
-            <link>https://kaelli1234.github.io/posts/2017/01/03/php-doc/</link>
+            <link>http://www.lilinjian.com/posts/2017/01/03/php-doc/</link>
             <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2017/01/03/php-doc/</guid>
+            <guid>http://www.lilinjian.com/posts/2017/01/03/php-doc/</guid>
             <description>标记整理下书签
  PHP
  PHP 手册 PHP The Right Way PHP-FIG PSR中文版  Laravel
@@ -722,10 +722,10 @@ https://github.com/justinrainbow/json-schema
         
         <item>
             <title>一道有关MySQL查询语句的面试题</title>
-            <link>https://kaelli1234.github.io/posts/2016/10/10/mysql-query/</link>
+            <link>http://www.lilinjian.com/posts/2016/10/10/mysql-query/</link>
             <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2016/10/10/mysql-query/</guid>
+            <guid>http://www.lilinjian.com/posts/2016/10/10/mysql-query/</guid>
             <description>最近闲来无事，突然想起来之前在群里看到的一个有关MySQL查询语句的面试题，跟大家分享，顺便留作备忘。
 原始数据如下：
     id data name date     1 30 kael 20160718   2 30 soul 20160720   3 66 kael 20160719   4 52 soul 20160719   5 99 kael 20160720   6 82 soul 20160718     希望通过SQL语句得到如下结果：
@@ -834,10 +834,10 @@ https://github.com/justinrainbow/json-schema
         
         <item>
             <title>Lumen框架在同一域名多应用环境下的部署问题</title>
-            <link>https://kaelli1234.github.io/posts/2016/08/25/lumen-application/</link>
+            <link>http://www.lilinjian.com/posts/2016/08/25/lumen-application/</link>
             <pubDate>Thu, 25 Aug 2016 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2016/08/25/lumen-application/</guid>
+            <guid>http://www.lilinjian.com/posts/2016/08/25/lumen-application/</guid>
             <description> 在同一域名下部署多个应用时，使用Lumen框架遇到的问题 官方文档的推荐一般是通过配置网站的根目录至wwwroot/LUMEN/public/。如果服务器上只有Lumen一个应用是没有问题的，但是如果服务器上同时部署了多个应用，想通过wwwroot的相对路径http://DOMAIN/lumen/public/来访问框架url时就会出现NotFoundHttpException的异常。
 根据错误提示，定位到文件LUMEN/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php中370行：
 框架中的LUMEN/public/index.php默认是$app-&amp;gt;run();是不传$request的，对应调用的方法如下：
@@ -888,10 +888,10 @@ $app-&gt;run($request);</code></pre></div>
         
         <item>
             <title>PHP使用CURL访问HTTPS</title>
-            <link>https://kaelli1234.github.io/posts/2016/08/08/php-curl-https/</link>
+            <link>http://www.lilinjian.com/posts/2016/08/08/php-curl-https/</link>
             <pubDate>Mon, 08 Aug 2016 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2016/08/08/php-curl-https/</guid>
+            <guid>http://www.lilinjian.com/posts/2016/08/08/php-curl-https/</guid>
             <description>最近新上线的项目准备升级服务支持https访问，记录下使用curl方法访问https时遇到的问题。
 直接上代码:
 function post($url, $param) { $ssl = substr($url, 0, 8) == &amp;#34;https://&amp;#34; ? true : false; $ch = curl_init(); curl_setopt($ch, CURLOPT_URL, $url); if ($ssl) { curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 信任任何证书 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // 检查证书中是否设置域名 // $cacert = getcwd() . &amp;#39;/cacert.pem&amp;#39;; //CA根证书 // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true); // 只信任CA颁布的证书 // curl_setopt($ch, CURLOPT_CAINFO, $cacert); // CA根证书（用来验证的网站证书是否是CA颁布） // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2); // 检查证书中是否设置域名，并且是否与提供的主机名匹配 } curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); curl_setopt($ch, CURLOPT_POST, true); curl_setopt($ch, CURLOPT_POSTFIELDS, $param); $return = curl_exec($ch); curl_close($ch); return $return; } 简单来说访问https时，只要指定CURLOPT_SSL_VERIFYPEER和CURLOPT_SSL_VERIFYHOST为false就能支持访问了。当然也可以下载对应的根证书，然后在请求中带上访问也可以。</description>
@@ -937,10 +937,10 @@ function post($url, $param) { $ssl = substr($url, 0, 8) == &amp;#34;https://&amp
         
         <item>
             <title>Lumen / Laravel .env</title>
-            <link>https://kaelli1234.github.io/posts/2016/07/20/lumen-env/</link>
+            <link>http://www.lilinjian.com/posts/2016/07/20/lumen-env/</link>
             <pubDate>Wed, 20 Jul 2016 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2016/07/20/lumen-env/</guid>
+            <guid>http://www.lilinjian.com/posts/2016/07/20/lumen-env/</guid>
             <description> 最近在使用Lumen框架部署上线时遇到的一个问题 Lumen / Laravel 中的.env文件里一般配置着各种环境所对应的配置，例如：db，cache等配置，官方的推荐是版本库中保留一个.env.example，各个环境cp .env.example的配置并配上对应环境的配置生成.env文件，完成项目的部署。
 但实际应用中会遇到一个比较尴尬的问题是：如果新增或修改了配置，需要手动到对应环境上去改配置，一般的测试或者开发环境还好，但是对应线上生产或者预发布环境，一般是不允许手动修改文件的。而且也有可能线上的机器较多，手动一个个去操作不方便也不安全。而且像现在一般也都是使用自动化上线工具，拉版本库代码直接上线，此时官方推荐的做法就不是很适用了。
 既然满足不了自己的需求，那就稍微改造一下吧。 初步的思路是: 把各个环境的配置文件都放到版本库里，然后代码里判断出各个环境，加载对应的环境配置。
@@ -1008,10 +1008,10 @@ function post($url, $param) { $ssl = substr($url, 0, 8) == &amp;#34;https://&amp
         
         <item>
             <title>Lumen CORS</title>
-            <link>https://kaelli1234.github.io/posts/2016/06/30/lumen-cors/</link>
+            <link>http://www.lilinjian.com/posts/2016/06/30/lumen-cors/</link>
             <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2016/06/30/lumen-cors/</guid>
+            <guid>http://www.lilinjian.com/posts/2016/06/30/lumen-cors/</guid>
             <description>使用Lumen框架如何解决跨域问题 跨域问题想必是每个从事web相关开发的同学经常遇到的问题，特别是现在越来越多的应用采用的前后端分离的开发模式，所以解决跨域问题成了大家必不可少的一项技能。最近在使用Lumen框架开发时也遇到了这个问题。
 进入主题之前我们先来个铺垫，首先我们来了解一下什么是跨域，以及一些解决方案 这是铺垫
 有兴趣的同学可以仔细看看，其实W3C标准的解决方案是只要在服务器response的头部带上Access-Control-Allow-Origin：DOMAIN(允许跨域访问的域名，*代表所有)，不过需要一提的是该方案只支持IE8及以上，以及一些现代浏览器(Fire Fox,Chrome,etc.)。解决跨域比较常见的还有使用jsonp，但这不是本文重点，这里就不具体展开了。
@@ -1119,10 +1119,10 @@ github上也有人跟我有同样的疑问
         
         <item>
             <title>php5.6 curl 上传文件失败</title>
-            <link>https://kaelli1234.github.io/posts/2016/04/05/php-curlfile/</link>
+            <link>http://www.lilinjian.com/posts/2016/04/05/php-curlfile/</link>
             <pubDate>Tue, 05 Apr 2016 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2016/04/05/php-curlfile/</guid>
+            <guid>http://www.lilinjian.com/posts/2016/04/05/php-curlfile/</guid>
             <description>php5.6 CURLFile 新项目中要完成一个上传文件的接口，要写个自测接口时遇到的坑。。。
 之前php5.4版本时curl中直接通过@符号+文件路径，则curl自动会把文件解析上传，后端通过$_FILES变量拿到，但在写自测脚本时死活没反应。。。纠结了半天才在 stackoverflow 找到答案。
 原来新版php中CURLOPT_SAFE_UPLOAD参数默认已经是true了，所以不支持@这样（不安全）的写法，而是通过CURLFile类来完成模拟文件上传。代码如下:
@@ -1156,10 +1156,10 @@ $sResponse = curl_exec ($ch);</code></pre></div>
         
         <item>
             <title>Swagger初探</title>
-            <link>https://kaelli1234.github.io/posts/2015/12/25/swagger/</link>
+            <link>http://www.lilinjian.com/posts/2015/12/25/swagger/</link>
             <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2015/12/25/swagger/</guid>
+            <guid>http://www.lilinjian.com/posts/2015/12/25/swagger/</guid>
             <description>缘由 最近项目要加新功能，回头看了下之前定义的接口文档，简直不忍直视。有用txt的、有用word的，各种格式不规范，写法也不一样，看起来很头疼。不够直观，并且也很难维护。想起之前同事分享过的Swagger，趁着最近不忙，就决定着手把之前的API文档整理到Swagger中去。
 Swagger是什么  官方的介绍是 A POWERFUL INTERFACE TO YOUR API。
  通过Swagger提供的相关tools可以很直观的在网页上浏览你的API、测试API、甚至通过解析Swagger definitions（一个YAML or JSON格式的文档），直接自动生成相关代码（swagger-codegen）。个人理解Swagger的核心就是Swagger definitions，相关工具可以（Swagger Core、Swagger Editor）生成Swagger definitions，（Swagger UI、Swagger Editor）解析Swagger definitions生成UI界面。
@@ -1229,10 +1229,10 @@ GitHub里的说明基本都已经很详细了，这里就不多做介绍了。�
         
         <item>
             <title>MongoDB使用心得</title>
-            <link>https://kaelli1234.github.io/posts/2015/12/08/mongodb/</link>
+            <link>http://www.lilinjian.com/posts/2015/12/08/mongodb/</link>
             <pubDate>Tue, 08 Dec 2015 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2015/12/08/mongodb/</guid>
+            <guid>http://www.lilinjian.com/posts/2015/12/08/mongodb/</guid>
             <description>首先MongoDB是什么 区别于传统的关系型数据库（MySQL），MongoDB是NoSQL类型的数据库，是一个基于分布式【文件】存储的开源数据库系统。MongoDB将数据存储为一个文档，数据结构由键值(key=&amp;gt;value)对组成。MongoDB文档类似于 JSON（BSON）对象。字段值可以包含其他文档，数组及文档数组。所有的数据对于MongoDB来说都是文档，不存在传统关系型数据的字段限制，这就意味这你同一个document中的每条数据可能字段都会不一样，非常灵活（维护困难）。
 MongoDB的特点  面向文件的 高性能 高可用性 易扩展性 丰富的查询语言  我们能用MongoDB做什么 由于MongoDB不支持事务，对数据一致性要求较高的业务（如银行业务，应用核心业务等）并不适用。对于其他个人网站（数据类型简单），日志分析类型业务（写入量大）等都和适合，甚至也可以把他当做缓存使用。
 怎么用 要用好MongoDB，首先你应该忘记你学过的那些优雅无敌的SQL，忘记传统的范式化设计。 举个栗子： 一个业务场景是，保存图书馆内的所有书和其作者的相关信息。 在使用传统的范式化关系型数据设计中，我们可能会有1张book表和1张author表
@@ -1321,10 +1321,10 @@ MongoDB的特点  面向文件的 高性能 高可用性 易扩展性 丰富的�
         
         <item>
             <title>Redis::OPT_SERIALIZER</title>
-            <link>https://kaelli1234.github.io/posts/2015/10/20/redis-option/</link>
+            <link>http://www.lilinjian.com/posts/2015/10/20/redis-option/</link>
             <pubDate>Tue, 20 Oct 2015 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2015/10/20/redis-option/</guid>
+            <guid>http://www.lilinjian.com/posts/2015/10/20/redis-option/</guid>
             <description>标记一个最近使用redis遇到的坑 背景： php-redis版本: 2.2.1 新老项目使用的封装PHP Redis类不一样(主要是以下选项)：
 $redis-&amp;gt;setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_IGBINARY); 导致使用设置过该option的封装的Redis类获取由未设置该选项的Redis类生成的key时程序会down掉，反之获取的key值为乱码。
 解决方案: 暂时没想到更好的方案，目前的解决方式是统一redis中的键值，将老项目中用的redis key全delete掉 统一使用新的Redis类生成</description>
@@ -1349,10 +1349,10 @@ $redis-&amp;gt;setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_IGBINARY); 导
         
         <item>
             <title>开篇日志</title>
-            <link>https://kaelli1234.github.io/posts/2015/09/30/hello-world/</link>
+            <link>http://www.lilinjian.com/posts/2015/09/30/hello-world/</link>
             <pubDate>Wed, 30 Sep 2015 00:00:00 +0000</pubDate>
             
-            <guid>https://kaelli1234.github.io/posts/2015/09/30/hello-world/</guid>
+            <guid>http://www.lilinjian.com/posts/2015/09/30/hello-world/</guid>
             <description>分享一个生成树的方法
 function list_to_tree($list, $pk=&amp;#39;id&amp;#39;, $pid = &amp;#39;pid&amp;#39;, $child = &amp;#39;_child&amp;#39;, $root = 0) { // 创建Tree $tree = array(); if(is_array($list)) { // 创建基于主键的数组引用 $refer = array(); foreach ($list as $key =&amp;gt; $data) { $refer[$data[$pk]] =&amp;amp; $list[$key]; } foreach ($list as $key =&amp;gt; $data) { // 判断是否存在parent $parentId = $data[$pid]; if ($root == $parentId) { $tree[] =&amp;amp; $list[$key]; }else{ if (isset($refer[$parentId])) { $parent =&amp;amp; $refer[$parentId]; $parent[$child][] =&amp;amp; $list[$key]; } } } } return $tree; }</description>
             <content type="html"><![CDATA[<p><code>分享一个生成树的方法</code></p>

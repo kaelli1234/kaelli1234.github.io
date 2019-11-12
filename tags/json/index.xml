@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>json on Kael Li</title>
+    <link>http://www.lilinjian.com/tags/json/</link>
+    <description>Recent content in json on Kael Li</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Wed, 01 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.lilinjian.com/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>php通过定义JSON Schema来校验对应JSON的格式数据</title>
+      <link>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</link>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</guid>
+      <description>最近项目中遇到的需求，对于某JSON类型的字段，要做验证的格式校验，并且标出错误的地方。
+本着不要重复造轮子的原则，在github上找到了这个项目
+ 通过定义固定格式的JSON Schema来验证对应格式的数据。
+https://github.com/justinrainbow/json-schema
+ 具体的使用方法就不多说啦，通过composer安装，参照示例就好。
+主要说一下JSON Schema文件的定义问题，👇结合一个比较复杂的例子来说一下Schema各个参数的作用
+{ &amp;#34;title&amp;#34;: &amp;#34;Product set&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;array&amp;#34;, //原数据格式为数组 &amp;#34;minItems&amp;#34;: 1, //最少1个元素 &amp;#34;maxItems&amp;#34;: 10, //最多10个元素 &amp;#34;uniqueItems&amp;#34;: true, //数据重复判断 &amp;#34;items&amp;#34;: { &amp;#34;title&amp;#34;: &amp;#34;Product&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;object&amp;#34;, //数组元素的值为对象 &amp;#34;properties&amp;#34;: { &amp;#34;id&amp;#34;: { &amp;#34;description&amp;#34;: &amp;#34;The unique identifier for a product&amp;#34;, //id字段描述 &amp;#34;type&amp;#34;: &amp;#34;string&amp;#34;, //id的类型为string &amp;#34;pattern&amp;#34;: &amp;#34;^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$&amp;#34; //验证id是否符合该正则表达式的规则 }, &amp;#34;name&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;string&amp;#34;, //name的类型为string &amp;#34;maxLength&amp;#34;: 10 //最大长度为10 }, &amp;#34;url&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;string&amp;#34;, //url的类型为string &amp;#34;format&amp;#34;: &amp;#34;uri&amp;#34; //并且符合URI规则 }, &amp;#34;price&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;number&amp;#34;, //price的类型为number &amp;#34;minimum&amp;#34;: 0, //最小值为0 &amp;#34;exclusiveMinimum&amp;#34;: true //该字段为true时验证price&amp;gt;0,false时验证price&amp;gt;=0 }, &amp;#34;tags&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;string&amp;#34;, //tags的类型为string &amp;#34;enum&amp;#34;: [ //并且值为enum中之一 &amp;#34;food&amp;#34;, &amp;#34;fruit&amp;#34;, &amp;#34;juice&amp;#34; ] } }, &amp;#34;additionalProperties&amp;#34;: false, //不允许除了items.</description>
+    </item>
+    
+  </channel>
+</rss>
