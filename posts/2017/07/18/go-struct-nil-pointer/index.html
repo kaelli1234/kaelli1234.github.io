@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="Kael Li ">
+<meta name="description"
+    content="go, golang, struct, nil pointer" />
+<meta name="keywords" content="Kael Li, kael, kael li, lilinjian, blog, 个人博客, GitHub Pages" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://kaelli1234.github.io/posts/2017/07/18/go-struct-nil-pointer/" />
+
+
+<title>
+    
+    Golang中的JSON处理技巧 :: Kael Li 
+    
+</title>
+
+
+
+
+
+<link rel="stylesheet" href="https://kaelli1234.github.io/main.min.73f55a8d452be4a71b2960620b80252cf69abd84d63fe7501abf0a39b1a70a78.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="https://kaelli1234.github.io/assets/css/zoom.css">
+
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://kaelli1234.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kaelli1234.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kaelli1234.github.io/favicon-16x16.png">
+<link rel="manifest" href="https://kaelli1234.github.io/site.webmanifest">
+<link rel="mask-icon" href="https://kaelli1234.github.io/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="https://kaelli1234.github.io/favicon.ico">
+<meta name="msapplication-TileColor" content="#252627">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="Golang中的JSON处理技巧">
+<meta itemprop="description" content="go, golang, struct, nil pointer">
+
+
+<meta itemprop="datePublished" content="2017-07-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-07-18T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="68">
+
+
+
+<meta itemprop="keywords" content="golang," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Golang中的JSON处理技巧"/>
+<meta name="twitter:description" content="go, golang, struct, nil pointer"/>
+
+
+
+<meta property="article:section" content="Web" />
+
+<meta property="article:published_time" content="2017-07-18 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://kaelli1234.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ rm -rf /*</span>
+            <span class="logo__cursor" style="background-color:#67a2c9"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://kaelli1234.github.io/posts/">Archives</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>One minute
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title"><a href="https://kaelli1234.github.io/posts/2017/07/18/go-struct-nil-pointer/">Golang中的JSON处理技巧</a></h1>
+
+            
+
+            <div class="post-content">
+                <p>又好久没有更新博客了，最近因为项目需要学习了下Go语言，才真正明白了为什么说PHP是世界上最好的语言🤣。言归正传，首先先推荐本秘籍
+<a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md" target="_blank">build-web-application-with-golang</a> Github上的高星项目，作者同时也是beego框架的开发者，本项目是作者使用Go进行Web开发的经验总结，满满的干货。</p>
+
+<p>所以基础的<a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/07.2.md" target="_blank">JSON处理</a>就直接参考文档吧，主要内容大概是Go中有专门的JSON包来处理JSON数据，通过定义对应的struct，tag映射字段，很方便的可以把JSON数据转成struct，或者把struct转化成JSON字符串。</p>
+
+<p>其中文档中有段描述是这样的：</p>
+
+<blockquote>
+<p>tag中如果带有&rdquo;omitempty&rdquo;选项，那么如果该字段值为空，就不会输出到JSON串中，这其实是一个比较常见的需求，当某个字段为空时，我们不希望该字段也输出在JSON字符串中，通过在结构体的tag中定义<code>omitempty</code>就可以达到该目的。</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DataAttachment</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Id</span>     <span style="color:#66d9ef">string</span>                 <span style="color:#e6db74">`json:&#34;id,omitempty&#34;`</span>
+    <span style="color:#a6e22e">Head</span>   <span style="color:#a6e22e">DataAttachmentHead</span>     <span style="color:#e6db74">`json:&#34;head,omitempty&#34;`</span>
+    <span style="color:#a6e22e">Body</span>   <span style="color:#a6e22e">DataAttachmentBody</span>     <span style="color:#e6db74">`json:&#34;body,omitempty&#34;`</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DataAttachmentHead</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Text</span>    <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;text,omitempty&#34;`</span>
+    <span style="color:#a6e22e">Bgcolor</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;bgcolor,omitempty&#34;`</span>
+    <span style="color:#a6e22e">Tcolor</span>  <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;tcolor,omitempty&#34;`</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DataAttachmentBody</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Title</span>   <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;title,omitempty&#34;`</span>
+    <span style="color:#a6e22e">Image</span>   <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;image,omitempty&#34;`</span>
+    <span style="color:#a6e22e">Content</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;content,omitempty&#34;`</span>
+}</code></pre></div>
+<p>以上DataAttachment这个结构，通过对head，body定义omitempty选项，我们预期是希望如果当head，body为空时，可以不输出这2个字段到JSON中。但是事实上却和我们预期的有所差异，我们通过<code>json.Marshal</code>得到的JSON中还是会有空的head和body。</p>
+
+<p>所以我们要怎样才能实现我们的目的呢？其实很简单，<strong>传指针</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DataAttachment</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Id</span>     <span style="color:#66d9ef">string</span>                 <span style="color:#e6db74">`json:&#34;id,omitempty&#34;`</span>
+    <span style="color:#a6e22e">Head</span>   <span style="color:#f92672">*</span><span style="color:#a6e22e">DataAttachmentHead</span>     <span style="color:#e6db74">`json:&#34;head,omitempty&#34;`</span>
+    <span style="color:#a6e22e">Body</span>   <span style="color:#f92672">*</span><span style="color:#a6e22e">DataAttachmentBody</span>     <span style="color:#e6db74">`json:&#34;body,omitempty&#34;`</span>
+}</code></pre></div>
+<hr />
+
+<p><strong>参考</strong></p>
+
+<ul>
+<li><a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/07.2.md" target="_blank">https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/07.2.md</a></li>
+<li><a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md" target="_blank">build-web-application-with-golang</a></li>
+<li><a href="https://stackoverflow.com/questions/18088294/how-to-not-marshal-an-empty-struct-into-json-with-go" target="_blank">https://stackoverflow.com/questions/18088294/how-to-not-marshal-an-empty-struct-into-json-with-go</a></li>
+</ul>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://kaelli1234.github.io/tags/golang">golang</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>68 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2017-07-18 08:00 &#43;0800</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="https://kaelli1234.github.io/posts/2018/01/18/php72-aes/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">PHP7.2 AES加解密</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://kaelli1234.github.io/posts/2017/03/08/validator-middleware/">
+                                <span class="button__text">Lumen中使用ValidatorMiddleware中间件处理请求参数验证</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+
+        
+          <div id="comments" class="thin">
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'da8a559c7dacd4e2f7e3',
+    clientSecret: '38e314ddeb1c162c98d0ee9e40809e4f2dd4b80c',
+    repo: 'kaelli1234.github.io',
+    owner: 'kaelli1234',
+    admin: ['kaelli1234'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+</div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+                <span><a href="https://kaelli1234.github.io">Kael Li</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://kaelli1234.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://kaelli1234.github.io/bundle.min.4c3fb12a087ceed4a52cb5d57068a9795c7069617a01ca70f788052ad66e1791779e6c72686e1dc0ca13dc03b0203204b6566bb0dd1ee80de2b7ff4d8fe53db2.js" integrity="sha512-TD&#43;xKgh87tSlLLXVcGipeVxwaWF6Acpw94gFKtZuF5F3nmxyaG4dwMoT3AOwIDIEtlZrsN0e6A3it/9Nj&#43;U9sg=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-68252443-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+	
+		<script src="https://kaelli1234.github.io/assets/resources/jquery/jquery.min.js"></script>
+	
+
+	
+		<script src="https://kaelli1234.github.io/assets/js/zoom.min.js"></script>
+	
+
+
+    </body>
+</html>

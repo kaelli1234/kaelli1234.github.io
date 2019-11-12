@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="Kael Li ">
+<meta name="description"
+    content="php, lumen, validator" />
+<meta name="keywords" content="Kael Li, kael, kael li, lilinjian, blog, 个人博客, GitHub Pages" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://kaelli1234.github.io/posts/2017/03/08/validator-middleware/" />
+
+
+<title>
+    
+    Lumen中使用ValidatorMiddleware中间件处理请求参数验证 :: Kael Li 
+    
+</title>
+
+
+
+
+
+<link rel="stylesheet" href="https://kaelli1234.github.io/main.min.73f55a8d452be4a71b2960620b80252cf69abd84d63fe7501abf0a39b1a70a78.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="https://kaelli1234.github.io/assets/css/zoom.css">
+
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://kaelli1234.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kaelli1234.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kaelli1234.github.io/favicon-16x16.png">
+<link rel="manifest" href="https://kaelli1234.github.io/site.webmanifest">
+<link rel="mask-icon" href="https://kaelli1234.github.io/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="https://kaelli1234.github.io/favicon.ico">
+<meta name="msapplication-TileColor" content="#252627">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="Lumen中使用ValidatorMiddleware中间件处理请求参数验证">
+<meta itemprop="description" content="php, lumen, validator">
+
+
+<meta itemprop="datePublished" content="2017-03-08T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-03-08T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="230">
+
+
+
+<meta itemprop="keywords" content="php,lumen," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Lumen中使用ValidatorMiddleware中间件处理请求参数验证"/>
+<meta name="twitter:description" content="php, lumen, validator"/>
+
+
+
+<meta property="article:section" content="Web" />
+
+<meta property="article:published_time" content="2017-03-08 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://kaelli1234.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ rm -rf /*</span>
+            <span class="logo__cursor" style="background-color:#67a2c9"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://kaelli1234.github.io/posts/">Archives</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title"><a href="https://kaelli1234.github.io/posts/2017/03/08/validator-middleware/">Lumen中使用ValidatorMiddleware中间件处理请求参数验证</a></h1>
+
+            
+
+            <div class="post-content">
+                <p>本次文章的缘由来之下面这段代码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">public function test()
+{
+    $message = [
+        &#39;object_id.required&#39; =&gt; ErrorCode::PARAM_MISS,
+    ];
+    $validator = Validator::make($this-&gt;request-&gt;all(), [
+        &#39;object_id&#39; =&gt; &#39;required&#39;,
+    ], $message);
+    if ($validator-&gt;fails()) {
+        ...error
+    }
+    ...
+}</code></pre></div>
+<p>上面这个场景应该应该大家都不会陌生，验证请求参数是一个非常基础的场景，当需要验证的参数较少时看上去也还能勉强接受，但如果接口接收的参数较多时就会变成这样😂</p>
+
+<p>
+    <img src="https://kaelli1234.github.io/assets/images/validator-middleware-1.png"  data-action="zoom" alt="validator-middleware-1"  class="center"  />
+
+（其实还有10+个参数的图，考虑到密集恐惧症患者的感受没有发🙂）好吧，没办法。谁让我们这个接口接收的参数多呢！怎么办，我也很无奈呀！</p>
+
+<p><strong>思考</strong>：真的没有办法吗？我review了最近写的几个controller，发现了一个共同点：每一个接口请求对应的处理的方法中，第一段都是处理对应的参数验证的逻辑，这段逻辑除了对应接口的验证规则不一样，其他都是调用相同的逻辑。其实都是重复的代码！怎么样可以把这些代码优化一下呢？</p>
+
+<p>好，通过分析上面的问题，我的第一反应是引用中间件来统一处理这部分的逻辑。网上找了下相关的处理方式，并且参考了下Laravel FormRequest的实现，我设计了ValidatorMiddleware中间件来解决这个问题，代码如下。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">namespace App\Http\Middleware;
+
+use Closure;
+
+class ValidatorMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        list($controller, $method) = explode(&#39;@&#39;, $request-&gt;route()[1][&#39;uses&#39;]);
+        $class = str_replace(&#39;Controller&#39;, &#39;Request&#39;, $controller);
+        if (class_exists($class)) {
+            $messageRequest = new $class($request, $method);
+            $messageRequest-&gt;validate();
+        }
+
+        return $next($request);
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/** Request处理基类 **/
+namespace App\Http\Requests;
+
+use Illuminate\Http\Request;
+use App\Exceptions\ResponseException;
+use Validator;
+
+class BaseRequest
+{
+    protected $input;
+    protected $method;
+
+    public function __construct(Request $request, String $method)
+    {
+        $this-&gt;input = $request-&gt;all();
+        $this-&gt;method = $method;
+    }
+
+    public function rules()
+    {
+        return [];
+    }
+
+    public function messages()
+    {
+        return [];
+    }
+
+    public function validate()
+    {
+        $rules = array_get($this-&gt;rules(), $this-&gt;method, []);
+        $messages = array_get($this-&gt;messages(), $this-&gt;method, []);
+        $validator = Validator::make($this-&gt;input, $rules, $messages);
+        if ($validator-&gt;fails()) {
+            $err = $validator-&gt;errors()-&gt;all();
+            throw new ResponseException(head($err));
+        }
+
+        return true;
+    }
+}</code></pre></div>
+<p>下面结合实际的例子来讲解:</p>
+
+<blockquote>
+<p>请求url: /user/get?id=1 <br />
+对应处理的controller@function: UserController@get <br /></p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">/** 那么对应的UserRequest */
+namespace App\Http\Requests;
+
+use App\ErrorCode;
+use App\Http\Requests\BaseRequest;
+
+class UserRequest extends BaseRequest
+{
+    public function rules()
+    {
+        return [
+            &#39;get&#39; =&gt; [
+                &#39;id&#39; =&gt; &#39;required|integer&#39;,
+            ]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            &#39;get&#39; =&gt; [
+                &#39;id.required&#39; =&gt; ErrorCode::PARAM_MISS,
+                &#39;id.integer&#39; =&gt; ErrorCode::PARAM_ERROR,
+            ]
+        ];
+    }
+}</code></pre></div>
+<p>当/user/get?id=1被访问时，首先会进入<code>ValidatorMiddleware-&gt;handle</code>方法中，<code>$request-&gt;route()[1]['uses']</code>会返回<code>App\Http\Controllers\UserController@get</code>, 所以代码先会去找有没有对应的<code>App\Http\Requests\UserRequest</code>, 如果有则会去执行它的validate方法。下面我们看UserRequest，它里面并没有validate，但是它继承了BaseRequest，所以我们再看BaseRequest的validate，这里的代码就比较熟悉了，就是我们之前调用Lumen的Validator类进行参数验证的逻辑了，由于在new UserRequest时指定了method参数，所以在验证时会去取方法对应的验证规则进行参数验证，如果失败则会抛出我们自定义的异常，最后，我们只要在<code>Exception\Handler</code>中处理自定义的异常就好了。</p>
+
+<p>口水了一大堆，下面总结一下，核心思想如下：</p>
+
+<blockquote>
+<p>Controllers目录同级下会多出一个Requests目录，每个controller都会有对应的request类，request类中会有rules、messages（对应Validator类的验证规则和返回消息）俩个二维数组，一维的键值对应要处理的controller的方法，二维对应具体规则和消息。引用ValidatorMiddleware中间件统一处理接口请求，通过自定义异常类处理错误返回。</p>
+</blockquote>
+
+<p>参考了Laravel China社区各位大神的设计，结合了下自己项目中的场景，设计了以上方案，欢迎大家拍砖。</p>
+
+<hr />
+
+<p><strong>参考</strong></p>
+
+<ul>
+<li><a href="https://laravel-china.org/topics/3137/design-of-shared-verification-rule-layer" target="_blank">https://laravel-china.org/topics/3137/design-of-shared-verification-rule-layer</a></li>
+</ul>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://kaelli1234.github.io/tags/php">php</a></span><span class="tag"><a href="https://kaelli1234.github.io/tags/lumen">lumen</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>230 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2017-03-08 08:00 &#43;0800</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="https://kaelli1234.github.io/posts/2017/07/18/go-struct-nil-pointer/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">Golang中的JSON处理技巧</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://kaelli1234.github.io/posts/2017/03/01/json-schema-validate/">
+                                <span class="button__text">php通过定义JSON Schema来校验对应JSON的格式数据</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+
+        
+          <div id="comments" class="thin">
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'da8a559c7dacd4e2f7e3',
+    clientSecret: '38e314ddeb1c162c98d0ee9e40809e4f2dd4b80c',
+    repo: 'kaelli1234.github.io',
+    owner: 'kaelli1234',
+    admin: ['kaelli1234'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+</div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+                <span><a href="https://kaelli1234.github.io">Kael Li</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://kaelli1234.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://kaelli1234.github.io/bundle.min.4c3fb12a087ceed4a52cb5d57068a9795c7069617a01ca70f788052ad66e1791779e6c72686e1dc0ca13dc03b0203204b6566bb0dd1ee80de2b7ff4d8fe53db2.js" integrity="sha512-TD&#43;xKgh87tSlLLXVcGipeVxwaWF6Acpw94gFKtZuF5F3nmxyaG4dwMoT3AOwIDIEtlZrsN0e6A3it/9Nj&#43;U9sg=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-68252443-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+	
+		<script src="https://kaelli1234.github.io/assets/resources/jquery/jquery.min.js"></script>
+	
+
+	
+		<script src="https://kaelli1234.github.io/assets/js/zoom.min.js"></script>
+	
+
+
+    </body>
+</html>
