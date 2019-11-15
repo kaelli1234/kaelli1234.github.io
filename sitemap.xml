@@ -3,162 +3,162 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://www.lilinjian.com/</loc>
+    <loc>/</loc>
     <lastmod>2018-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/mysql/</loc>
+    <loc>/tags/mysql/</loc>
     <lastmod>2018-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2018/11/08/go-mgo/</loc>
+    <loc>/posts/2018/11/08/mysql-deferred-join/</loc>
     <lastmod>2018-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2018-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2018-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/golang/</loc>
+    <loc>/tags/golang/</loc>
     <lastmod>2018-09-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2018/09/29/go-exec/</loc>
+    <loc>/posts/2018/09/29/go-exec/</loc>
     <lastmod>2018-09-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2018/06/29/go-mgo/</loc>
+    <loc>/posts/2018/06/29/go-mgo/</loc>
     <lastmod>2018-06-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/php/</loc>
+    <loc>/tags/php/</loc>
     <lastmod>2018-01-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2018/01/18/php72-aes/</loc>
+    <loc>/posts/2018/01/18/php72-aes/</loc>
     <lastmod>2018-01-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2017/07/18/go-struct-nil-pointer/</loc>
+    <loc>/posts/2017/07/18/go-struct-nil-pointer/</loc>
     <lastmod>2017-07-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/lumen/</loc>
+    <loc>/tags/lumen/</loc>
     <lastmod>2017-03-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2017/03/08/validator-middleware/</loc>
+    <loc>/posts/2017/03/08/validator-middleware/</loc>
     <lastmod>2017-03-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/json/</loc>
+    <loc>/tags/json/</loc>
     <lastmod>2017-03-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2017/03/01/json-schema-validate/</loc>
+    <loc>/posts/2017/03/01/json-schema-validate/</loc>
     <lastmod>2017-03-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2017/02/10/imooc-lumen-api/</loc>
+    <loc>/posts/2017/02/10/imooc-lumen-api/</loc>
     <lastmod>2017-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2017/01/03/php-doc/</loc>
+    <loc>/posts/2017/01/03/php-doc/</loc>
     <lastmod>2017-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2016/10/10/mysql-query/</loc>
+    <loc>/posts/2016/10/10/mysql-query/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2016/08/25/lumen-application/</loc>
+    <loc>/posts/2016/08/25/lumen-application/</loc>
     <lastmod>2016-08-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2016/08/08/php-curl-https/</loc>
+    <loc>/posts/2016/08/08/php-curl-https/</loc>
     <lastmod>2016-08-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2016/07/20/lumen-env/</loc>
+    <loc>/posts/2016/07/20/lumen-env/</loc>
     <lastmod>2016-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2016/06/30/lumen-cors/</loc>
+    <loc>/posts/2016/06/30/lumen-cors/</loc>
     <lastmod>2016-06-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2016/04/05/php-curlfile/</loc>
+    <loc>/posts/2016/04/05/php-curlfile/</loc>
     <lastmod>2016-04-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/swagger/</loc>
+    <loc>/tags/swagger/</loc>
     <lastmod>2015-12-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2015/12/25/swagger/</loc>
+    <loc>/posts/2015/12/25/swagger/</loc>
     <lastmod>2015-12-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/mongodb/</loc>
+    <loc>/tags/mongodb/</loc>
     <lastmod>2015-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2015/12/08/mongodb/</loc>
+    <loc>/posts/2015/12/08/mongodb/</loc>
     <lastmod>2015-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/tags/redis/</loc>
+    <loc>/tags/redis/</loc>
     <lastmod>2015-10-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2015/10/20/redis-option/</loc>
+    <loc>/posts/2015/10/20/redis-option/</loc>
     <lastmod>2015-10-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/posts/2015/09/30/hello-world/</loc>
+    <loc>/posts/2015/09/30/hello-world/</loc>
     <lastmod>2015-09-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.lilinjian.com/categorys/</loc>
+    <loc>/categorys/</loc>
   </url>
   
 </urlset>

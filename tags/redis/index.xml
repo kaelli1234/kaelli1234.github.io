@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>redis on Kael Li</title>
-    <link>http://www.lilinjian.com/tags/redis/</link>
+    <link>/tags/redis/</link>
     <description>Recent content in redis on Kael Li</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Tue, 20 Oct 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.lilinjian.com/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Redis::OPT_SERIALIZER</title>
-      <link>http://www.lilinjian.com/posts/2015/10/20/redis-option/</link>
+      <link>/posts/2015/10/20/redis-option/</link>
       <pubDate>Tue, 20 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.lilinjian.com/posts/2015/10/20/redis-option/</guid>
+      <guid>/posts/2015/10/20/redis-option/</guid>
       <description>标记一个最近使用redis遇到的坑 背景： php-redis版本: 2.2.1 新老项目使用的封装PHP Redis类不一样(主要是以下选项)：
 $redis-&amp;gt;setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_IGBINARY); 导致使用设置过该option的封装的Redis类获取由未设置该选项的Redis类生成的key时程序会down掉，反之获取的key值为乱码。
 解决方案: 暂时没想到更好的方案，目前的解决方式是统一redis中的键值，将老项目中用的redis key全delete掉 统一使用新的Redis类生成</description>
