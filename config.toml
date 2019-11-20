@@ -1,0 +1,144 @@
+baseURL = "/"
+title   = "Kael Li"
+
+DefaultContentLanguage = "en"
+
+theme = "hello-friend-ng"
+
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
+
+rssLimit  = 10  # Maximum number of items in the RSS feed.
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
+
+googleAnalytics = "UA-68252443-1"
+# disqusShortname = ""
+
+archetypeDir = "archetypes"
+contentDir   = "content"
+dataDir      = "data"
+layoutDir    = "layouts"
+publishDir   = "public"
+
+buildDrafts  = false
+buildFuture  = false
+buildExpored = false
+canonifyURLs = true
+
+enableRobotsTXT = true
+enableGitInfo   = false
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableRSS     = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
+
+[permalinks]
+  posts = "/posts/:year/:month/:day/:slug"
+
+[author]
+  name = "Kael Li"
+
+[blackfriday]
+  hrefTargetBlank = true
+
+[taxonomies]
+  tag      = "tags"
+  category = "categorys"
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  # Metadata mostly used in document's head
+  description = "blog, 个人博客, GitHub Pages"
+  keywords = "Kael Li, kael, kael li, lilinjian, blog, 个人博客, GitHub Pages"
+  images = []
+
+  homeSubtitle = "逝水流年，不变初心，方得始终。"
+
+  # Prefix of link to the git commit detail page. GitInfo must be enabled.
+  # gitUrl = ""
+
+  # Integrate Javascript files or stylesheets by adding the url to the external assets or by
+  # linking local files with their path relative to the static folder, e.g. "css/styles.css"
+  customCSS = [
+    "/assets/css/zoom.css"
+  ]
+
+  customJS = [
+    "/assets/resources/jquery/jquery.min.js",
+    "/assets/js/zoom.min.js"
+  ]
+
+  # Toggle this option need to rebuild SCSS, requires extended version of Hugo
+  justifyContent = false  # Set "text-align: justify" to .content.
+
+  # Directory name of your blog content (default is `content/posts`)
+  contentTypeName = "posts"
+  # Default theme "light" or "dark"
+  defaultTheme = "dark"
+  themeColor = "#252627"
+
+  enableGitalk = true
+
+  [params.gitalk]
+    clientID = "da8a559c7dacd4e2f7e3" # Your client ID
+    clientSecret = "38e314ddeb1c162c98d0ee9e40809e4f2dd4b80c" # Your client secret
+    repo = "kaelli1234.github.io" # The repo to store comments
+    owner = "kaelli1234" # Your GitHub ID
+    admin= "kaelli1234" # Required. Github repository owner and collaborators. (Users who having write access to this repository)
+    id= "location.pathname" # The unique id of the page.
+    labels= "gitalk" # Github issue labels. If you used to use Gitment, you can change it
+    perPage= 15 # Pagination size, with maximum 100.
+    pagerDirection= "last" # Comment sorting direction, available values are 'last' and 'first'.
+    createIssueManually= false # If it is 'false', it is auto to make a Github issue when the administrators login.
+    distractionFreeMode= false # Enable hot key (cmd|ctrl + enter) submit comment.
+
+  # Colors for favicons
+  [params.favicon.color]
+    mask = "#252627"
+    msapplication = "#252627"
+    theme = "#252627"
+
+  [params.logo]
+    logoText     = "$ rm -rf /*"
+    logoHomeLink = "/"
+    # Set to a valid CSS color to change the cursor in the logo.
+    logoColor    = "#67a2c9"
+
+  # Social icons
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/kaelli1234"
+
+  [[params.social]]
+    name = "email"
+    url  = "mailto:llj1589@vip.qq.com"
+
+  [[params.social]]
+    name = "weibo"
+    url  = "https://weibo.com/codingggggg"
+
+  [[params.social]]
+    name = "linkedin"
+    url  = "https://www.linkedin.com/in/%E6%9E%97%E5%81%A5-%E6%9D%8E-26ab3594/"
+
+[languages]
+  [languages.en]
+    subtitle  = ""
+    weight    = 1
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+
+[menu]
+  # [[menu.main]]
+  #   identifier = "about"
+  #   name       = "About"
+  #   url        = "about/"
+  [[menu.main]]
+    identifier = "archives"
+    name       = "Archives"
+    url        = "posts/"
